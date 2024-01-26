@@ -10,6 +10,7 @@ import androidx.fragment.app.FragmentTransaction
 import com.example.movieapp.R
 import com.example.movieapp.databinding.FragmentBottomAppBarHolderBinding
 import com.example.movieapp.presentation.ui.fragments.favorites.FavoritesFragment
+import com.example.movieapp.presentation.ui.fragments.home.HomeFragment
 import com.example.movieapp.presentation.ui.fragments.search.SearchFragment
 import com.example.movieapp.presentation.ui.fragments.watchlist.WatchListFragment
 
@@ -31,13 +32,14 @@ class BottomAppBarHolderFragment : Fragment() {
         binding.bottomAppBar.setOnItemSelectedListener {menuItem->
 
             when(menuItem.itemId){
+                R.id.action_home -> openFragment(HomeFragment())
                 R.id.action_search -> openFragment(SearchFragment())
                 R.id.action_watch_list -> openFragment(WatchListFragment())
                 R.id.action_favorites -> openFragment(FavoritesFragment())
             }
             true
         }
-        openFragment(SearchFragment())
+        openFragment(HomeFragment())
 
 
 
