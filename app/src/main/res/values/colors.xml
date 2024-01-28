@@ -5,4 +5,8 @@
     <color name="bottomAppBarBackgroundColor">#C5C5C5</color>
     <color name="bottomAppBarItemActive">#2265AE</color>
     <color name="bottomAppBarItemPassive">#1F1F20</color>
+    <color name="fragmentBGColor">#D6D6EC</color>
+    <color name="lightMediumGray">#80D1D1D1</color>
+    <color name="shimmer_parent_color">#C2C2C2</color>
+    <color name="shimmer_child_color">#80C2C2C2</color>
 </resources>

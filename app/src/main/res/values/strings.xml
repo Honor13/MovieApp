@@ -6,4 +6,8 @@
     <string name="watchlist">WatchList</string>
     <string name="favorites">Favorites</string>
     <string name="home">Home</string>
+    <string name="coming_soon">Coming Soon</string>
+    <string name="trending_tv">Trending TV</string>
+    <string name="popular">Popular</string>
+    <string name="trending_movies">Trending Movies</string>
 </resources>
