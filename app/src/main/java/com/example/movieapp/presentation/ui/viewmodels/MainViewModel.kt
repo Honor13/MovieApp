@@ -22,10 +22,13 @@ class MainViewModel @Inject constructor(
 ) : AndroidViewModel(application) {
 
     val upComingMoviesResponse: MutableLiveData<NetworkResult<Movies>> = MutableLiveData()
+    val trendingMoviesResponse: MutableLiveData<NetworkResult<Movies>> = MutableLiveData()
 
-    fun getUpComingMovies(queries: Map<String, String>) = viewModelScope.launch {
+    fun getMovies(queries: Map<String, String>) = viewModelScope.launch {
         getMoviesSafeCall(queries)
     }
+
+
 
     fun hasInternetConnection(): Boolean {
         val connectivityManager = getApplication<Application>().getSystemService(
@@ -73,16 +76,21 @@ class MainViewModel @Inject constructor(
     private suspend fun getMoviesSafeCall(queries: Map<String, String>) {
 
         upComingMoviesResponse.value = NetworkResult.Loading()
+        trendingMoviesResponse.value = NetworkResult.Loading()
 
         if (hasInternetConnection()) {
             try {
                 val responseUpComing = repository.remote.getUpComingMovies(queries)
+                val responseTrendingMovies = repository.remote.getTrendingMovies(queries)
                 upComingMoviesResponse.value = handleMoviesResponse(responseUpComing)
+                trendingMoviesResponse.value = handleMoviesResponse(responseTrendingMovies)
             }catch (e: Exception) {
-                upComingMoviesResponse.value = NetworkResult.Error("Movies Not Found!")
+                upComingMoviesResponse.value = NetworkResult.Error("Up Coming Movies Not Found!")
+                trendingMoviesResponse.value = NetworkResult.Error("Tending Moviews Not Found")
             }
          } else {
              upComingMoviesResponse.value = NetworkResult.Error("No Internet Connection")
+             trendingMoviesResponse.value = NetworkResult.Error("No Internet Connection")
         }
 
     }

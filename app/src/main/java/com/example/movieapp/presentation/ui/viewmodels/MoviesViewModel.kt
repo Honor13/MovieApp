@@ -10,12 +10,13 @@ import javax.inject.Inject
 @HiltViewModel
 class MoviesViewModel @Inject constructor(application: Application): AndroidViewModel(application) {
 
-    fun applyQueries(): HashMap<String, String> {
+    fun applyQueriesToUpComing(): HashMap<String, String> {
         val queries: HashMap<String, String> = HashMap()
 
         queries[QUERY_API_KEY] = API_KEY
 
         return queries
     }
+
 
 }

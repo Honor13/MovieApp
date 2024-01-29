@@ -11,4 +11,9 @@ interface MoviesApi {
         @QueryMap queries: Map<String, String>
     ): Response<Movies>
 
+
+    @GET("trending/movie/day?language=en-US")
+    suspend fun getTrendingMovies(
+        @QueryMap queries: Map<String, String>
+    ):Response<Movies>
 }

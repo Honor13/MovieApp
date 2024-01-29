@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.movieapp.R
 import com.example.movieapp.databinding.FragmentHomeBinding
+import com.example.movieapp.presentation.ui.adapters.TrendingMoviesAdapter
 import com.example.movieapp.presentation.ui.adapters.UpComingMoviesAdapter
 import com.example.movieapp.presentation.ui.viewmodels.MainViewModel
 import com.example.movieapp.presentation.ui.viewmodels.MoviesViewModel
@@ -23,6 +24,7 @@ class HomeFragment : Fragment() {
 
     private lateinit var binding: FragmentHomeBinding
     private val comingSoonAdapter by lazy { UpComingMoviesAdapter() }
+    private val trendingMoviesAdapter by lazy { TrendingMoviesAdapter() }
     private lateinit var mainViewModel: MainViewModel
     private lateinit var moviesViewModel: MoviesViewModel
     override fun onCreateView(
@@ -30,7 +32,7 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-        binding = DataBindingUtil.inflate(layoutInflater,R.layout.fragment_home,container,false)
+        binding = DataBindingUtil.inflate(layoutInflater, R.layout.fragment_home, container, false)
 
         setupRecyclerView()
         requestApiData()
@@ -45,7 +47,35 @@ class HomeFragment : Fragment() {
     }
 
     private fun requestApiData() {
-        mainViewModel.getUpComingMovies(moviesViewModel.applyQueries())
+        mainViewModel.getMovies(moviesViewModel.applyQueriesToUpComing())
+
+// Trending Movies
+        mainViewModel.trendingMoviesResponse.observe(viewLifecycleOwner) { response ->
+            when (response) {
+                is NetworkResult.Success -> {
+
+                    response.data?.let { trendingMoviesAdapter.setData(it) }
+                }
+
+                is NetworkResult.Error -> {
+                    hideShimmerEffect()
+                    Toast.makeText(
+                        requireContext(),
+                        response.message.toString(),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+
+                is NetworkResult.Loading -> {
+                    showShimmerEffect()
+
+                }
+            }
+
+
+        }
+
+// UpComing Movies
         mainViewModel.upComingMoviesResponse.observe(viewLifecycleOwner) { response ->
             when (response) {
                 is NetworkResult.Success -> {
@@ -73,8 +103,7 @@ class HomeFragment : Fragment() {
     }
 
 
-
-    private fun showShimmerEffect(){
+    private fun showShimmerEffect() {
         binding.shimmerFrameLayout.visibility = View.VISIBLE
         binding.rVPopular.visibility = View.INVISIBLE
         binding.rVComingSoon.visibility = View.INVISIBLE
@@ -88,7 +117,8 @@ class HomeFragment : Fragment() {
 
         binding.shimmerFrameLayout.showShimmer(true)
     }
-    private fun hideShimmerEffect(){
+
+    private fun hideShimmerEffect() {
 
         binding.shimmerFrameLayout.visibility = View.INVISIBLE
         binding.rVPopular.visibility = View.VISIBLE
@@ -106,9 +136,17 @@ class HomeFragment : Fragment() {
 
     }
 
-    private fun setupRecyclerView(){
+    private fun setupRecyclerView() {
+        //rv ComingSoon
         binding.rVComingSoon.adapter = comingSoonAdapter
-        binding.rVComingSoon.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)
+        binding.rVComingSoon.layoutManager =
+            LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+
+        // rv Trending Movies
+        binding.rVTrendingMovies.adapter = trendingMoviesAdapter
+        binding.rVTrendingMovies.layoutManager =
+            LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+
         showShimmerEffect()
     }
 

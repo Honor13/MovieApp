@@ -6,25 +6,28 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.movieapp.data.models.Movies
 import com.example.movieapp.data.models.Result
-import com.example.movieapp.databinding.ComingSoonCardLayoutBinding
+import com.example.movieapp.databinding.TrendingMoviesCardLayoutBinding
 import com.example.movieapp.util.MoviesDiffUtil
 
-class UpComingMoviesAdapter: RecyclerView.Adapter<UpComingMoviesAdapter.MyViewHolder>() {
+class TrendingMoviesAdapter: RecyclerView.Adapter<TrendingMoviesAdapter.MyViewHolder>() {
 
-    private var upComingMovies = emptyList<Result>()
+    private var trendingMovies = emptyList<Result>()
+    class MyViewHolder(private val binding:TrendingMoviesCardLayoutBinding): RecyclerView.ViewHolder(binding.root) {
 
-    class MyViewHolder(private val binding:ComingSoonCardLayoutBinding): RecyclerView.ViewHolder(binding.root) {
         fun bind(result: Result) {
             binding.result = result
             binding.executePendingBindings()
         }
+
         companion object {
+
             fun from(parent: ViewGroup): MyViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
-                val binding = ComingSoonCardLayoutBinding.inflate(layoutInflater,parent,false)
-                return  MyViewHolder(binding)
+                val binding = TrendingMoviesCardLayoutBinding.inflate(layoutInflater,parent,false)
+                return MyViewHolder(binding)
             }
         }
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
@@ -32,19 +35,18 @@ class UpComingMoviesAdapter: RecyclerView.Adapter<UpComingMoviesAdapter.MyViewHo
     }
 
     override fun getItemCount(): Int {
-        return upComingMovies.size
+        return trendingMovies.size
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        val currentMovies = upComingMovies[position]
-        holder.bind(currentMovies)
+        val currentTrendMovies = trendingMovies[position]
+        holder.bind(currentTrendMovies)
     }
 
-    fun setData(newData: Movies){
-        val upComingMoviesDiffUtil = MoviesDiffUtil(upComingMovies,newData.results)
-        val upComingDiffUtilResult = DiffUtil.calculateDiff(upComingMoviesDiffUtil)
-        upComingMovies = newData.results
-        upComingDiffUtilResult.dispatchUpdatesTo(this)
-
+    fun setData(newData: Movies) {
+        val trendingMoviesDiffUtil = MoviesDiffUtil(trendingMovies, newData.results)
+        val trendingDiffUtilResult = DiffUtil.calculateDiff(trendingMoviesDiffUtil)
+        trendingMovies = newData.results
+        trendingDiffUtilResult.dispatchUpdatesTo(this)
     }
 }
