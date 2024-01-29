@@ -10,4 +10,7 @@
     <string name="trending_tv">Trending TV</string>
     <string name="popular">Popular</string>
     <string name="trending_movies">Trending Movies</string>
+    <string name="empty_fav">Oops!\nYou haven\'t added anything to Favorites yet</string>
+    <string name="empty_watch_list">There\'s no movie to watch here</string>
+    <string name="search_for_a_movie">Search for a movie</string>
 </resources>

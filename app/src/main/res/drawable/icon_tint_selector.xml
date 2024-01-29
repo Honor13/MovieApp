@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:state_checked="true"
-        android:color="@color/bottomAppBarItemActive"/>
+        android:color="@color/bottomAppBarItemActive"
+        />
     <item android:state_checked="false"
-        android:color ="@color/bottomAppBarItemPassive"/>
+        android:color ="@color/bottomAppBarItemPassive"
+       />
+
+
 </selector>
