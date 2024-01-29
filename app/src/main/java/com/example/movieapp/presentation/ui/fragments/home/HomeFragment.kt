@@ -5,14 +5,26 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.movieapp.R
 import com.example.movieapp.databinding.FragmentHomeBinding
+import com.example.movieapp.presentation.ui.adapters.UpComingMoviesAdapter
+import com.example.movieapp.presentation.ui.viewmodels.MainViewModel
+import com.example.movieapp.presentation.ui.viewmodels.MoviesViewModel
+import com.example.movieapp.util.NetworkResult
+import dagger.hilt.android.AndroidEntryPoint
 
 
+@AndroidEntryPoint
 class HomeFragment : Fragment() {
 
     private lateinit var binding: FragmentHomeBinding
+    private val comingSoonAdapter by lazy { UpComingMoviesAdapter() }
+    private lateinit var mainViewModel: MainViewModel
+    private lateinit var moviesViewModel: MoviesViewModel
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -20,14 +32,49 @@ class HomeFragment : Fragment() {
 
         binding = DataBindingUtil.inflate(layoutInflater,R.layout.fragment_home,container,false)
 
-        showShimmer()
+        setupRecyclerView()
+        requestApiData()
 
         return binding.root
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        mainViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
+        moviesViewModel = ViewModelProvider(this).get(MoviesViewModel::class.java)
+    }
+
+    private fun requestApiData() {
+        mainViewModel.getUpComingMovies(moviesViewModel.applyQueries())
+        mainViewModel.upComingMoviesResponse.observe(viewLifecycleOwner) { response ->
+            when (response) {
+                is NetworkResult.Success -> {
+                    hideShimmerEffect()
+                    response.data?.let { comingSoonAdapter.setData(it) }
+                }
+
+                is NetworkResult.Error -> {
+                    hideShimmerEffect()
+                    Toast.makeText(
+                        requireContext(),
+                        response.message.toString(),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+
+                is NetworkResult.Loading -> {
+                    showShimmerEffect()
+
+                }
+            }
+
+        }
+
+    }
 
 
-    private fun showShimmer(){
+
+    private fun showShimmerEffect(){
         binding.shimmerFrameLayout.visibility = View.VISIBLE
         binding.rVPopular.visibility = View.INVISIBLE
         binding.rVComingSoon.visibility = View.INVISIBLE
@@ -41,15 +88,29 @@ class HomeFragment : Fragment() {
 
         binding.shimmerFrameLayout.showShimmer(true)
     }
-//    private fun hideShimmer(){
-//
-//        binding.shimmerFrameLayout.visibility = View.INVISIBLE
-//        binding.rVPopular.visibility = View.VISIBLE
-//        binding.rVComingSoon.visibility = View.VISIBLE
-//        binding.rVTrendingMovies.visibility = View.VISIBLE
-//        binding.rVTrendingTV.visibility = View.VISIBLE
-//        binding.shimmerFrameLayout.hideShimmer()
-//
-//
-//    }
+    private fun hideShimmerEffect(){
+
+        binding.shimmerFrameLayout.visibility = View.INVISIBLE
+        binding.rVPopular.visibility = View.VISIBLE
+        binding.rVComingSoon.visibility = View.VISIBLE
+        binding.rVTrendingMovies.visibility = View.VISIBLE
+        binding.rVTrendingTV.visibility = View.VISIBLE
+
+        binding.textViewPopular.visibility = View.VISIBLE
+        binding.textViewComingSoon.visibility = View.VISIBLE
+        binding.textViewTrendingMovie.visibility = View.VISIBLE
+        binding.textViewTrendingTv.visibility = View.VISIBLE
+
+        binding.shimmerFrameLayout.hideShimmer()
+
+
+    }
+
+    private fun setupRecyclerView(){
+        binding.rVComingSoon.adapter = comingSoonAdapter
+        binding.rVComingSoon.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)
+        showShimmerEffect()
+    }
+
+
 }
