@@ -11,7 +11,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.movieapp.R
 import com.example.movieapp.databinding.FragmentHomeBinding
+import com.example.movieapp.presentation.ui.adapters.PopularMoviesAdapter
 import com.example.movieapp.presentation.ui.adapters.TrendingMoviesAdapter
+import com.example.movieapp.presentation.ui.adapters.TrendingTVsAdapter
 import com.example.movieapp.presentation.ui.adapters.UpComingMoviesAdapter
 import com.example.movieapp.presentation.ui.viewmodels.MainViewModel
 import com.example.movieapp.presentation.ui.viewmodels.MoviesViewModel
@@ -25,6 +27,9 @@ class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
     private val comingSoonAdapter by lazy { UpComingMoviesAdapter() }
     private val trendingMoviesAdapter by lazy { TrendingMoviesAdapter() }
+    private val trendingTVsAdapter by lazy { TrendingTVsAdapter() }
+    private val popularMoviesAdapter by lazy { PopularMoviesAdapter() }
+
     private lateinit var mainViewModel: MainViewModel
     private lateinit var moviesViewModel: MoviesViewModel
     override fun onCreateView(
@@ -58,7 +63,6 @@ class HomeFragment : Fragment() {
                 }
 
                 is NetworkResult.Error -> {
-                    hideShimmerEffect()
                     Toast.makeText(
                         requireContext(),
                         response.message.toString(),
@@ -75,16 +79,14 @@ class HomeFragment : Fragment() {
 
         }
 
-// UpComing Movies
-        mainViewModel.upComingMoviesResponse.observe(viewLifecycleOwner) { response ->
+// Trending TVs
+        mainViewModel.trendingTVsResponse.observe(viewLifecycleOwner) { response ->
             when (response) {
                 is NetworkResult.Success -> {
-                    hideShimmerEffect()
-                    response.data?.let { comingSoonAdapter.setData(it) }
+                    response.data?.let { trendingTVsAdapter.setData(it) }
                 }
 
                 is NetworkResult.Error -> {
-                    hideShimmerEffect()
                     Toast.makeText(
                         requireContext(),
                         response.message.toString(),
@@ -95,6 +97,54 @@ class HomeFragment : Fragment() {
                 is NetworkResult.Loading -> {
                     showShimmerEffect()
 
+                }
+            }
+        }
+
+
+// UpComing Movies
+        mainViewModel.upComingMoviesResponse.observe(viewLifecycleOwner) { response ->
+            when (response) {
+                is NetworkResult.Success -> {
+                    response.data?.let { comingSoonAdapter.setData(it) }
+                }
+
+                is NetworkResult.Error -> {
+                    Toast.makeText(
+                        requireContext(),
+                        response.message.toString(),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+
+                is NetworkResult.Loading -> {
+
+
+                }
+            }
+
+        }
+
+// Popular Movies
+        mainViewModel.popularMoviesResponse.observe(viewLifecycleOwner) { response ->
+            when (response) {
+                is NetworkResult.Success -> {
+                    hideShimmerEffect()
+                    response.data?.let { popularMoviesAdapter.setData(it) }
+                }
+
+                is NetworkResult.Error -> {
+                    hideShimmerEffect()
+                    Toast.makeText(
+                        requireContext(),
+                        response.message.toString(),
+                        Toast.LENGTH_SHORT
+                    ).show()
+
+                }
+
+                is NetworkResult.Loading -> {
+                    showShimmerEffect()
                 }
             }
 
@@ -137,7 +187,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun setupRecyclerView() {
-        //rv ComingSoon
+        // rv ComingSoon
         binding.rVComingSoon.adapter = comingSoonAdapter
         binding.rVComingSoon.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
@@ -145,6 +195,16 @@ class HomeFragment : Fragment() {
         // rv Trending Movies
         binding.rVTrendingMovies.adapter = trendingMoviesAdapter
         binding.rVTrendingMovies.layoutManager =
+            LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+
+        // rv Trending TVs
+        binding.rVTrendingTV.adapter = trendingTVsAdapter
+        binding.rVTrendingTV.layoutManager =
+            LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+
+        // rv Popular Movies
+        binding.rVPopular.adapter = popularMoviesAdapter
+        binding.rVPopular.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
 
         showShimmerEffect()
