@@ -8,6 +8,7 @@ import com.example.movieapp.data.models.Movies
 import com.example.movieapp.data.models.Result
 import com.example.movieapp.databinding.PopularMoviesCardLayoutBinding
 import com.example.movieapp.util.MoviesDiffUtil
+import java.util.Locale
 
 class PopularMoviesAdapter:RecyclerView.Adapter<PopularMoviesAdapter.MyViewHolder>() {
 
@@ -16,6 +17,8 @@ class PopularMoviesAdapter:RecyclerView.Adapter<PopularMoviesAdapter.MyViewHolde
 
         fun bind(result: Result){
             binding.result = result
+            binding.vote =  String.format(Locale.US,"%,.1f",result.voteAverage)
+            binding.executePendingBindings()
             binding.executePendingBindings()
         }
 

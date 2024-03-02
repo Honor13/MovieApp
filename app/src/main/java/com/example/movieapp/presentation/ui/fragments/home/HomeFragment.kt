@@ -32,6 +32,8 @@ class HomeFragment : Fragment() {
 
     private lateinit var mainViewModel: MainViewModel
     private lateinit var moviesViewModel: MoviesViewModel
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -41,6 +43,8 @@ class HomeFragment : Fragment() {
 
         setupRecyclerView()
         requestApiData()
+
+//        binding.posterPath =  popularMovies.get(0).posterPath
 
         return binding.root
     }
@@ -52,14 +56,18 @@ class HomeFragment : Fragment() {
     }
 
     private fun requestApiData() {
-        mainViewModel.getMovies(moviesViewModel.applyQueriesToUpComing())
+        mainViewModel.getMovies(moviesViewModel.applyQueriesTVsAndMovies())
 
 // Trending Movies
         mainViewModel.trendingMoviesResponse.observe(viewLifecycleOwner) { response ->
             when (response) {
                 is NetworkResult.Success -> {
 
-                    response.data?.let { trendingMoviesAdapter.setData(it) }
+                    response.data?.let {
+                        trendingMoviesAdapter.setData(it)
+
+
+                    }
                 }
 
                 is NetworkResult.Error -> {

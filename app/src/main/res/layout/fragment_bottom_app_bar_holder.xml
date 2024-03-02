@@ -19,6 +19,7 @@
             android:layout_gravity="bottom"
             app:itemTextColor="@drawable/icon_tint_selector"
             app:itemIconTint="@drawable/icon_tint_selector"
+            app:itemActiveIndicatorStyle="@color/black"
             app:itemRippleColor="@color/black"
             android:outlineAmbientShadowColor="@color/black"
             android:background="@color/bottomAppBarBackgroundColor"

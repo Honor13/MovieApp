@@ -32,10 +32,12 @@
 
 
 
-                <de.hdodenhof.circleimageview.CircleImageView
+                <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/circleImageView"
+                    app:shapeAppearanceOverlay="@style/CircularImage"
                     loadImageFromUrl200="@{result.posterPath}"
-                    android:layout_width="75dp"
+                    android:scaleType="fitXY"
+                    android:layout_width="90dp"
                     android:layout_height="90dp"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="4dp"

@@ -79,10 +79,6 @@ dependencies {
     implementation("androidx.navigation:navigation-ui-ktx:2.7.6")
     kapt("com.google.dagger:hilt-android-compiler:2.48")
 
-    //Glide
-    implementation("com.github.bumptech.glide:glide:4.13.2")
-    //circle image view
-    implementation("de.hdodenhof:circleimageview:3.1.0")
 
     // Shimmer
     implementation("com.facebook.shimmer:shimmer:0.5.0")

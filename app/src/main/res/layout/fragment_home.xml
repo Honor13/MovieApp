@@ -5,7 +5,12 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+            <variable
+                name="result"
+                type="com.example.movieapp.data.models.Result" />
+            <variable
+                name="posterPath"
+                type="String" />
     </data>
 
     <androidx.core.widget.NestedScrollView
@@ -16,12 +21,13 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@color/black"
             tools:context=".presentation.ui.fragments.home.HomeFragment">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rVComingSoon"
                 android:layout_width="0dp"
-                android:layout_height="160dp"
+                android:layout_height="140dp"
                 android:layout_marginTop="4dp"
                 android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -36,7 +42,7 @@
                 android:layout_marginTop="4dp"
                 android:fontFamily="@font/unica_one"
                 android:text="@string/coming_soon"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="22sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -44,15 +50,15 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageView
+            <androidx.viewpager2.widget.ViewPager2
                 android:id="@+id/imageViewDefaultMovie"
                 android:layout_width="match_parent"
+
                 android:layout_height="300dp"
                 android:layout_marginTop="4dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/rVComingSoon"
-                tools:src="@tools:sample/avatars" />
+                app:layout_constraintTop_toBottomOf="@+id/rVComingSoon" />
 
             <TextView
                 android:id="@+id/textViewTrendingMovie"
@@ -62,7 +68,7 @@
                 android:layout_marginTop="4dp"
                 android:fontFamily="@font/unica_one"
                 android:text="@string/trending_movies"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
@@ -71,7 +77,7 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rVTrendingMovies"
                 android:layout_width="0dp"
-                android:layout_height="160dp"
+                android:layout_height="200dp"
                 android:layout_marginTop="4dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -86,7 +92,7 @@
                 android:layout_marginTop="4dp"
                 android:fontFamily="@font/unica_one"
                 android:text="@string/trending_tv"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
@@ -95,7 +101,7 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rVTrendingTV"
                 android:layout_width="0dp"
-                android:layout_height="160dp"
+                android:layout_height="200dp"
                 android:layout_marginTop="4dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
@@ -110,7 +116,7 @@
                 android:layout_marginTop="4dp"
                 android:fontFamily="@font/unica_one"
                 android:text="@string/popular"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
@@ -120,7 +126,7 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rVPopular"
                 android:layout_width="0dp"
-                android:layout_height="160dp"
+                android:layout_height="200dp"
                 android:layout_marginTop="4dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"

@@ -16,6 +16,7 @@ import kotlinx.coroutines.launch
 import retrofit2.Response
 import javax.inject.Inject
 
+
 @HiltViewModel
 class MainViewModel @Inject constructor(
     private val repository: Repository,
@@ -119,6 +120,7 @@ class MainViewModel @Inject constructor(
                 upComingMoviesResponse.value = handleMoviesResponse(responseUpComing)
                 trendingMoviesResponse.value = handleMoviesResponse(responseTrendingMovies)
                 trendingTVsResponse.value = handleTVsResponse(responseTVsMovies)
+
                 popularMoviesResponse.value = handleMoviesResponse(responsePopularMovies)
 
             } catch (e: Exception) {
@@ -132,6 +134,8 @@ class MainViewModel @Inject constructor(
         }
 
     }
+
+
 
 
 }

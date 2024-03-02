@@ -2,11 +2,15 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="red">#DC2222</color>
     <color name="bottomAppBarBackgroundColor">#020000</color>
-    <color name="bottomAppBarItemActive">#FFC107</color>
-    <color name="bottomAppBarItemPassive">#FBFBFB</color>
+    <color name="bottomAppBarItemActive">#DC2222</color>
+    <color name="bottomAppBarItemPassive">#FF9800</color>
+    <color name="textColor">#FF9800</color>
+    <color name="imdbTextColor">#DFAD18</color>
     <color name="fragmentBGColor">#D6D6EC</color>
     <color name="lightMediumGray">#80D1D1D1</color>
     <color name="shimmer_parent_color">#C2C2C2</color>
     <color name="shimmer_child_color">#80C2C2C2</color>
+    <color name="transparentImdbBGColor">#90000000</color>
 </resources>

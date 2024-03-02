@@ -27,4 +27,6 @@ interface MoviesApi {
     suspend fun getPopularMovies(
         @QueryMap queries: Map<String, String>
     ):Response<Movies>
+
+
 }
