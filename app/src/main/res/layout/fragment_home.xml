@@ -51,7 +51,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.viewpager2.widget.ViewPager2
-                android:id="@+id/imageViewDefaultMovie"
+                android:id="@+id/viewPagerTopRated"
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
                 android:layout_marginTop="4dp"
@@ -71,7 +71,7 @@
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageViewDefaultMovie" />
+                app:layout_constraintTop_toBottomOf="@+id/viewPagerTopRated" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rVTrendingMovies"

@@ -17,7 +17,7 @@ class Constants {
         const val IMAGES_BASE_URL = "https://image.tmdb.org/t/p/"
         const val IMAGE_200 = "w200/"
         const val IMAGE_400 = "w400/"
-//        const val IMAGE_500 = "w500/"
+        const val IMAGE_500 = "w500/"
 
 
 

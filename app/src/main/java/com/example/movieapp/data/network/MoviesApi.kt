@@ -28,5 +28,10 @@ interface MoviesApi {
         @QueryMap queries: Map<String, String>
     ):Response<Movies>
 
+    @GET("movie/top_rated?language=en-US")
+    suspend fun getTopRatedMovies(
+        @QueryMap queries: Map<String, String>
+    ):Response<Movies>
+
 
 }

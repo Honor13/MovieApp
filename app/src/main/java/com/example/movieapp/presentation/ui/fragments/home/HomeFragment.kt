@@ -15,6 +15,7 @@ import com.example.movieapp.presentation.ui.adapters.PopularMoviesAdapter
 import com.example.movieapp.presentation.ui.adapters.TrendingMoviesAdapter
 import com.example.movieapp.presentation.ui.adapters.TrendingTVsAdapter
 import com.example.movieapp.presentation.ui.adapters.UpComingMoviesAdapter
+import com.example.movieapp.presentation.ui.adapters.ViewPagerAdapter
 import com.example.movieapp.presentation.ui.viewmodels.MainViewModel
 import com.example.movieapp.presentation.ui.viewmodels.MoviesViewModel
 import com.example.movieapp.util.NetworkResult
@@ -29,6 +30,8 @@ class HomeFragment : Fragment() {
     private val trendingMoviesAdapter by lazy { TrendingMoviesAdapter() }
     private val trendingTVsAdapter by lazy { TrendingTVsAdapter() }
     private val popularMoviesAdapter by lazy { PopularMoviesAdapter() }
+    private val viewPagerAdapter by lazy { ViewPagerAdapter() }
+
 
     private lateinit var mainViewModel: MainViewModel
     private lateinit var moviesViewModel: MoviesViewModel
@@ -44,7 +47,7 @@ class HomeFragment : Fragment() {
         setupRecyclerView()
         requestApiData()
 
-//        binding.posterPath =  popularMovies.get(0).posterPath
+
 
         return binding.root
     }
@@ -84,6 +87,25 @@ class HomeFragment : Fragment() {
                 }
             }
 
+
+        }
+// Top Rated Movies For ViewPager2
+        mainViewModel.topRatedMoviesResponse.observe(viewLifecycleOwner) {response ->
+            when(response) {
+                is NetworkResult.Success -> {
+                    response.data?.let { viewPagerAdapter.submitList(it.results) }
+                }
+                is NetworkResult.Error -> {
+                    Toast.makeText(
+                        requireContext(),
+                        response.message.toString(),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+                is NetworkResult.Loading -> {
+                    showShimmerEffect()
+                }
+            }
 
         }
 
@@ -214,6 +236,9 @@ class HomeFragment : Fragment() {
         binding.rVPopular.adapter = popularMoviesAdapter
         binding.rVPopular.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+
+        // Top Rated Movies
+        binding.viewPagerTopRated.adapter = viewPagerAdapter
 
         showShimmerEffect()
     }

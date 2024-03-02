@@ -19,7 +19,6 @@ class PopularMoviesAdapter:RecyclerView.Adapter<PopularMoviesAdapter.MyViewHolde
             binding.result = result
             binding.vote =  String.format(Locale.US,"%,.1f",result.voteAverage)
             binding.executePendingBindings()
-            binding.executePendingBindings()
         }
 
         companion object {

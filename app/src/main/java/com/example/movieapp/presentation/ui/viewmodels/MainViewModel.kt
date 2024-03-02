@@ -27,6 +27,7 @@ class MainViewModel @Inject constructor(
     val trendingMoviesResponse: MutableLiveData<NetworkResult<Movies>> = MutableLiveData()
     val trendingTVsResponse: MutableLiveData<NetworkResult<TVs>> = MutableLiveData()
     val popularMoviesResponse: MutableLiveData<NetworkResult<Movies>> = MutableLiveData()
+    val topRatedMoviesResponse: MutableLiveData<NetworkResult<Movies>> = MutableLiveData()
 
     fun getMovies(queries: Map<String, String>) = viewModelScope.launch {
         getMoviesSafeCall(queries)
@@ -109,6 +110,7 @@ class MainViewModel @Inject constructor(
         trendingMoviesResponse.value = NetworkResult.Loading()
         trendingTVsResponse.value = NetworkResult.Loading()
         popularMoviesResponse.value = NetworkResult.Loading()
+        topRatedMoviesResponse.value = NetworkResult.Loading()
 
         if (hasInternetConnection()) {
             try {
@@ -116,18 +118,20 @@ class MainViewModel @Inject constructor(
                 val responseTrendingMovies = repository.remote.getTrendingMovies(queries)
                 val responseTVsMovies = repository.remote.getTrendingTVs(queries)
                 val responsePopularMovies = repository.remote.getPopularMovies(queries)
+                val responseTopRatedMovies = repository.remote.getTopRatedMovies(queries)
 
                 upComingMoviesResponse.value = handleMoviesResponse(responseUpComing)
                 trendingMoviesResponse.value = handleMoviesResponse(responseTrendingMovies)
                 trendingTVsResponse.value = handleTVsResponse(responseTVsMovies)
-
                 popularMoviesResponse.value = handleMoviesResponse(responsePopularMovies)
+                topRatedMoviesResponse.value = handleMoviesResponse(responseTopRatedMovies)
 
             } catch (e: Exception) {
                 upComingMoviesResponse.value = NetworkResult.Error("Up Coming Movies Not Found!")
                 trendingMoviesResponse.value = NetworkResult.Error("Tending Movies Not Found")
                 trendingTVsResponse.value = NetworkResult.Error("Popular Movies Not Found")
                 trendingTVsResponse.value = NetworkResult.Error("Tending Movies Not Found")
+                topRatedMoviesResponse.value = NetworkResult.Error("Top Rated Movies Not Found")
             }
         } else {
             upComingMoviesResponse.value = NetworkResult.Error("No Internet Connection")

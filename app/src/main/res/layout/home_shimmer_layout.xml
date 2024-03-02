@@ -35,7 +35,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <View
-                android:id="@+id/imageViewDefaultMovie"
+                android:id="@+id/viewPagerTopRated"
                 android:layout_width="409dp"
                 android:layout_height="300dp"
                 android:layout_marginTop="4dp"
@@ -53,7 +53,7 @@
                 android:layout_marginTop="4dp"
                 android:background="@color/shimmer_parent_color"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageViewDefaultMovie" />
+                app:layout_constraintTop_toBottomOf="@+id/viewPagerTopRated" />
 
             <View
                 android:id="@+id/rVTrendingMovies"

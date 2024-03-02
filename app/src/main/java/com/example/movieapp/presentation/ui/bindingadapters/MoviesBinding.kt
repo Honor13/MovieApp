@@ -7,6 +7,7 @@ import com.example.movieapp.R
 import com.example.movieapp.util.Constants.Companion.IMAGES_BASE_URL
 import com.example.movieapp.util.Constants.Companion.IMAGE_200
 import com.example.movieapp.util.Constants.Companion.IMAGE_400
+import com.example.movieapp.util.Constants.Companion.IMAGE_500
 
 
 class MoviesBinding {
@@ -34,16 +35,16 @@ class MoviesBinding {
             }
         }
 
-//        @BindingAdapter("loadImageFromUrl500")
-//        @JvmStatic
-//        fun loadingImageFromUrl500(imageView: ImageView, imageUrl : String){
-//
-//            imageView.load(IMAGES_BASE_URL + IMAGE_500 + imageUrl){
-//                crossfade(600)
-//                error(R.drawable.ic_error_placeholder)
-//
-//            }
-//        }
+        @BindingAdapter("loadImageFromUrl500")
+        @JvmStatic
+        fun loadingImageFromUrl500(imageView: ImageView, imageUrl : String){
+
+            imageView.load(IMAGES_BASE_URL + IMAGE_500 + imageUrl){
+                crossfade(600)
+                error(R.drawable.ic_error_placeholder)
+
+            }
+        }
     }
 
 }
