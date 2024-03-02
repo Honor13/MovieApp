@@ -13,4 +13,6 @@
     <string name="empty_fav">Oops!\nYou haven\'t added anything to Favorites yet</string>
     <string name="empty_watch_list">There\'s no movie to watch here</string>
     <string name="search_for_a_movie">Search for a movie</string>
+    <string name="release_date">release date:</string>
+    <string name="book_now">Book Now</string>
 </resources>
