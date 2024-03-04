@@ -13,4 +13,6 @@
     <color name="shimmer_parent_color">#C2C2C2</color>
     <color name="shimmer_child_color">#80C2C2C2</color>
     <color name="transparentImdbBGColor">#90000000</color>
+    <color name="transparent">#00000000</color>
+    <color name="textLightGray">#80E8E5E5</color>
 </resources>

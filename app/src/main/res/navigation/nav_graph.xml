@@ -9,7 +9,11 @@
         android:id="@+id/bottomAppHolderFragment"
         android:name="com.example.movieapp.presentation.ui.fragments.bottomnavholder.BottomAppBarHolderFragment"
         android:label="fragment_bottom_app_holder"
-        tools:layout="@layout/fragment_bottom_app_bar_holder" />
+        tools:layout="@layout/fragment_bottom_app_bar_holder" >
+        <action
+            android:id="@+id/action_bottomAppHolderFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/detailsFragment"
         android:name="com.example.movieapp.presentation.ui.fragments.details.DetailsFragment"
