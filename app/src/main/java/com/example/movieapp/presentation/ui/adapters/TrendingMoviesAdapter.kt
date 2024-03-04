@@ -2,10 +2,8 @@ package com.example.movieapp.presentation.ui.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.navigation.Navigation
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.example.movieapp.R
 import com.example.movieapp.data.models.Movies
 import com.example.movieapp.data.models.Result
 import com.example.movieapp.databinding.TrendingMoviesCardLayoutBinding
@@ -20,9 +18,7 @@ class TrendingMoviesAdapter: RecyclerView.Adapter<TrendingMoviesAdapter.MyViewHo
         fun bind(result: Result) {
             binding.result = result
             binding.vote =  String.format(Locale.US,"%,.1f",result.voteAverage)
-            binding.constLayoutCardView.setOnClickListener {
-                Navigation.findNavController(it).navigate(R.id.action_bottomAppHolderFragment_to_detailsFragment)
-            }
+
             binding.executePendingBindings()
         }
 

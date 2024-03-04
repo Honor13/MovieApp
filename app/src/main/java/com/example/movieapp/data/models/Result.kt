@@ -3,6 +3,7 @@ package com.example.movieapp.data.models
 
 import com.google.gson.annotations.SerializedName
 import com.google.gson.annotations.Expose
+import java.io.Serializable
 
 data class Result(
     @SerializedName("adult")
@@ -47,4 +48,4 @@ data class Result(
     @SerializedName("vote_count")
     @Expose
     val voteCount: Int
-)
+):Serializable

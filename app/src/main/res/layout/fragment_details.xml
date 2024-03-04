@@ -5,6 +5,14 @@
 
     <data>
 
+        <variable
+            name="result"
+            type="com.example.movieapp.data.models.Result" />
+
+        <variable
+            name="vote"
+            type="String" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -24,8 +32,10 @@
 
             <ImageView
                 android:id="@+id/imageView5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                loadImageFromUrl500="@{result.posterPath}"
+                android:layout_width="match_parent"
+                android:layout_height="380dp"
+                android:scaleType="fitCenter"
                 android:src="@drawable/empty_fav_movie_list" />
 
             <androidx.appcompat.widget.Toolbar
@@ -82,7 +92,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="4dp"
                     android:layout_marginTop="4dp"
-                    android:text="Imdb: "
+                    android:text="@string/imdb"
                     android:textColor="@color/white"
                     android:textSize="18sp"
                     app:layout_constraintStart_toStartOf="parent"
@@ -93,7 +103,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="4dp"
-                    android:text="8.4"
+                    android:text="@{vote}"
                     android:textColor="@color/white"
                     android:textSize="18sp"
                     android:textStyle="bold"
@@ -118,7 +128,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
-                    android:text="Title"
+                    android:text="@{result.title}"
                     android:textColor="@color/white"
                     android:textSize="20sp"
                     android:textStyle="bold"
@@ -131,13 +141,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="4dp"
-                    android:layout_marginEnd="4dp"
-                    android:text="Lorem Ipsum is simply dummy text of the printing
-                     and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since t
-                    he 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,"
+                    android:text="@{result.overview}"
                     android:textColor="@color/textLightGray"
                     android:textSize="18sp"
-                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textViewTitle" />
 
@@ -171,9 +177,9 @@
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
                     android:text="CAST: "
+                    android:textColor="@color/white"
                     android:textSize="20sp"
                     android:textStyle="bold"
-                    android:textColor="@color/white"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
@@ -181,8 +187,7 @@
                     android:id="@+id/rVCast"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:layout_constraintTop_toBottomOf="@+id/textViewCast"
-                    />
+                    app:layout_constraintTop_toBottomOf="@+id/textViewCast" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -191,12 +196,12 @@
         <!-- BottomAppBar -->
         <com.google.android.material.bottomappbar.BottomAppBar
             android:id="@+id/bottomAppBar"
-            android:backgroundTint="@color/black"
             android:layout_width="match_parent"
             android:layout_height="65dp"
             android:layout_gravity="bottom"
-            android:layout_marginBottom="0dp"
             android:layout_marginTop="0dp"
+            android:layout_marginBottom="0dp"
+            android:backgroundTint="@color/black"
             android:gravity="bottom"
             app:layout_constraintBottom_toBottomOf="parent">
 
@@ -206,13 +211,13 @@
                 android:id="@+id/addToCartButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="18dp"
                 android:layout_marginRight="10dp"
+                android:layout_marginBottom="18dp"
+                android:backgroundTint="@color/red"
+                android:text="Book Now"
+                android:textColor="#FFF"
                 android:textSize="22sp"
                 android:textStyle="bold"
-                android:text="Book Now"
-                android:backgroundTint="@color/red"
-                android:textColor="#FFF"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />

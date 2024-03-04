@@ -2,6 +2,7 @@ package com.example.movieapp.data.network
 
 import com.example.movieapp.data.models.Movies
 import com.example.movieapp.data.models.TVs
+import com.example.movieapp.data.models.moviedetails.Credits
 import retrofit2.Response
 import javax.inject.Inject
 
@@ -27,6 +28,10 @@ class RemoteDataSource @Inject constructor(
 
     suspend fun getTopRatedMovies(queries: Map<String, String>): Response<Movies> {
         return  moviesApi.getTopRatedMovies(queries)
+    }
+
+    suspend fun getMovieCredits(movieId:Int,queries: Map<String,String>): Response<Credits> {
+        return moviesApi.getMovieCredits(movieId,queries)
     }
 
 

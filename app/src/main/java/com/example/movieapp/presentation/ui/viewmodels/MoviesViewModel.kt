@@ -20,6 +20,14 @@ class MoviesViewModel @Inject constructor(application: Application): AndroidView
         return queries
     }
 
+//    fun applyQueriesMoviesForCredits(): HashMap<String,String> {
+//        val queries: HashMap<String, String> = HashMap()
+//
+//        queries[QUERY_API_KEY] = API_KEY
+//
+//        return queries
+//    }
+
 
 
 
