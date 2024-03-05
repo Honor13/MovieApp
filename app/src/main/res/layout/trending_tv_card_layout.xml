@@ -17,6 +17,8 @@
 
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        tVseries_id="@{resultTV.id}"
+        tVposterPath="@{resultTV.posterPath}"
         android:padding="5dp">
 
         <androidx.cardview.widget.CardView

@@ -1,5 +1,6 @@
 package com.example.movieapp.presentation.ui.bindingadapters
 import android.widget.ImageView
+import android.widget.LinearLayout
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.databinding.BindingAdapter
 import androidx.navigation.findNavController
@@ -16,10 +17,34 @@ class MoviesBinding {
 
     companion object {
 
+        @BindingAdapter("tVseries_id","tVposterPath", requireAll = false)
+        @JvmStatic
+        fun onTVSeriesSetOnClickListener(moviesRowLayout: ConstraintLayout,seriesId: Int,posterPath: String){
+            moviesRowLayout.setOnClickListener {
+                val action = BottomAppBarHolderFragmentDirections.actionBottomAppHolderFragmentToTvSeriesDetailsFragment(
+                    posterPath,
+                    seriesId
+                )
+                moviesRowLayout.findNavController().navigate(action)
+            }
+        }
 
-        @BindingAdapter("movie_id","posterPath", requireAll = true)
+        @BindingAdapter("movie_id","posterPath", requireAll = false)
         @JvmStatic
         fun onMoviesSetOnClickListener(moviesRowLayout: ConstraintLayout,movieId: Int,posterPath: String){
+
+            moviesRowLayout.setOnClickListener {
+                val action = BottomAppBarHolderFragmentDirections.actionBottomAppHolderFragmentToDetailsFragment(
+                    movieId,
+                    posterPath
+                )
+                moviesRowLayout.findNavController().navigate(action)
+            }
+        }
+
+        @BindingAdapter("vPmovie_id","vPposterPath", requireAll = false)
+        @JvmStatic
+        fun onVPMoviesSetOnClickListener(moviesRowLayout: LinearLayout,movieId: Int,posterPath: String){
             moviesRowLayout.setOnClickListener {
                 val action = BottomAppBarHolderFragmentDirections.actionBottomAppHolderFragmentToDetailsFragment(
                     movieId,

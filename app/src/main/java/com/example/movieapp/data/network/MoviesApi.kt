@@ -4,6 +4,8 @@ import com.example.movieapp.data.models.Movies
 import com.example.movieapp.data.models.TVs
 import com.example.movieapp.data.models.moviecredits.Credits
 import com.example.movieapp.data.models.moviedetails.DetailsResult
+import com.example.movieapp.data.models.tvDetails.DetailsTVResult
+import com.example.movieapp.data.models.tvcredits.TvCredits
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -48,4 +50,15 @@ interface MoviesApi {
         @QueryMap queries: Map<String, String>
     ):Response<DetailsResult>
 
+    @GET("tv/{series_id}?language=en-US")
+    suspend fun getTvSeriesDetails(
+        @Path("series_id") seriesId: Int,
+        @QueryMap queries: Map<String, String>
+    ):Response<DetailsTVResult>
+    //https://api.themoviedb.org/3/tv/206829/credits?language=en-US&api_key=7c646d0a3ce431c66c2408250dbc2bfe
+    @GET("tv/{series_id}/credits")
+    suspend fun getTvCredits(
+        @Path("series_id") seriesId: Int,
+        @QueryMap queries: Map<String, String>
+    ): Response<TvCredits>
 }

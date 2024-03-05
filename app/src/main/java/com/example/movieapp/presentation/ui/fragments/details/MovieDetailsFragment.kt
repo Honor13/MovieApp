@@ -20,7 +20,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import java.util.Locale
 
 @AndroidEntryPoint
-class DetailsFragment : Fragment() {
+class MovieDetailsFragment : Fragment() {
 
     private lateinit var binding: FragmentDetailsBinding
     private val castingAdapter by lazy { CastingAdapter() }
@@ -35,7 +35,7 @@ class DetailsFragment : Fragment() {
             DataBindingUtil.inflate(layoutInflater, R.layout.fragment_details, container, false)
 
 
-        val bundle: DetailsFragmentArgs by navArgs()
+        val bundle: MovieDetailsFragmentArgs by navArgs()
         val movieId = bundle.movieId
         val posterPath= bundle.posterPath
         binding.posterPath = posterPath
@@ -62,7 +62,7 @@ class DetailsFragment : Fragment() {
                 is NetworkResult.Success -> {
                     response.data?.let { detailData ->
                         binding.result = detailData
-                        binding.category=mainViewModel.processGenres(detailData.genres ?: emptyList())
+                        binding.category=mainViewModel.processMoviesGenres(detailData.genres ?: emptyList())
                         binding.vote = String.format(Locale.US, "%,.1f", detailData.voteAverage)
                     }
                     hideProgressBar()

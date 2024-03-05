@@ -1,26 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
         <variable
             name="result"
-            type="com.example.movieapp.data.models.moviedetails.DetailsResult" />
-
-        <variable
-            name="vote"
-            type="String" />
+            type="com.example.movieapp.data.models.tvDetails.DetailsTVResult" />
 
         <variable
             name="posterPath"
             type="String" />
 
         <variable
-            name="category"
+            name="vote"
             type="String" />
 
+        <variable
+            name="category"
+            type="String" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -138,7 +136,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="2dp"
                     android:layout_marginEnd="4dp"
-                    android:text="@{result.releaseDate}"
+                    android:text="@{result.lastAirDate}"
                     android:textColor="@color/lightMediumGray"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -149,7 +147,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
-                    android:text="@{result.title}"
+                    android:text="@{result.name}"
                     android:textColor="@color/white"
                     android:textSize="20sp"
                     android:textStyle="bold"
@@ -167,6 +165,18 @@
                     android:textSize="18sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textViewTitle" />
+
+                <TextView
+                    android:id="@+id/textViewNumberOfSeason"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="4dp"
+                    android:text='@{result.numberOfSeasons + " Season"}'
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
                 <TextView
                     android:id="@+id/textView4"
@@ -202,7 +212,7 @@
                     android:textSize="20sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView4" />
+                    app:layout_constraintTop_toBottomOf="@+id/textViewNumberOfSeason" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rVCast"
@@ -235,7 +245,7 @@
                 android:layout_marginRight="10dp"
                 android:layout_marginBottom="18dp"
                 android:backgroundTint="@color/red"
-                android:text="Book Now"
+                android:text="Add to Watchlist"
                 android:textColor="#FFF"
                 android:textSize="22sp"
                 android:textStyle="bold"
@@ -245,5 +255,6 @@
         </com.google.android.material.bottomappbar.BottomAppBar>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </layout>
+
+

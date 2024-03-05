@@ -19,7 +19,7 @@ class TrendingTVsAdapter:RecyclerView.Adapter<TrendingTVsAdapter.MyViewHolder>()
         fun bind(resultTV: ResultTV){
             binding.resultTV = resultTV
             binding.vote =  String.format(Locale.US,"%,.1f",resultTV.voteAverage)
-            binding.executePendingBindings()
+            resultTV.id
             binding.executePendingBindings()
         }
 
