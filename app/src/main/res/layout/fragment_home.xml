@@ -8,9 +8,7 @@
             <variable
                 name="result"
                 type="com.example.movieapp.data.models.Result" />
-            <variable
-                name="posterPath"
-                type="String" />
+
     </data>
 
     <androidx.core.widget.NestedScrollView

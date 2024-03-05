@@ -5,7 +5,6 @@ import androidx.databinding.BindingAdapter
 import androidx.navigation.findNavController
 import coil.load
 import com.example.movieapp.R
-import com.example.movieapp.data.models.Result
 import com.example.movieapp.presentation.ui.fragments.bottomnavholder.BottomAppBarHolderFragmentDirections
 import com.example.movieapp.util.Constants.Companion.IMAGES_BASE_URL
 import com.example.movieapp.util.Constants.Companion.IMAGE_200
@@ -17,11 +16,14 @@ class MoviesBinding {
 
     companion object {
 
-        @BindingAdapter("result","movieId", requireAll = true)
+
+        @BindingAdapter("movie_id","posterPath", requireAll = true)
         @JvmStatic
-        fun onMoviesSetOnClickListener(moviesRowLayout: ConstraintLayout, result: Result,movieId: Int){
+        fun onMoviesSetOnClickListener(moviesRowLayout: ConstraintLayout,movieId: Int,posterPath: String){
             moviesRowLayout.setOnClickListener {
-                val action = BottomAppBarHolderFragmentDirections.actionBottomAppHolderFragmentToDetailsFragment(result,movieId
+                val action = BottomAppBarHolderFragmentDirections.actionBottomAppHolderFragmentToDetailsFragment(
+                    movieId,
+                    posterPath
                 )
                 moviesRowLayout.findNavController().navigate(action)
             }

@@ -2,7 +2,8 @@ package com.example.movieapp.data.network
 
 import com.example.movieapp.data.models.Movies
 import com.example.movieapp.data.models.TVs
-import com.example.movieapp.data.models.moviedetails.Credits
+import com.example.movieapp.data.models.moviecredits.Credits
+import com.example.movieapp.data.models.moviedetails.DetailsResult
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -40,5 +41,11 @@ interface MoviesApi {
         @Path("movie_id") movieId: Int,
         @QueryMap queries: Map<String, String>
     ): Response<Credits>
+
+    @GET("movie/{movie_id}?language=en-US")
+    suspend fun getMovieDetails(
+        @Path("movie_id") movieId: Int,
+        @QueryMap queries: Map<String, String>
+    ):Response<DetailsResult>
 
 }

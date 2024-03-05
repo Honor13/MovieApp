@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.movieapp.R
 import com.example.movieapp.databinding.FragmentDetailsBinding
 import com.example.movieapp.presentation.ui.adapters.CastingAdapter
-import com.example.movieapp.presentation.ui.adapters.UpComingMoviesAdapter
 import com.example.movieapp.presentation.ui.viewmodels.MainViewModel
 import com.example.movieapp.presentation.ui.viewmodels.MoviesViewModel
 import com.example.movieapp.util.NetworkResult
@@ -37,12 +36,15 @@ class DetailsFragment : Fragment() {
 
 
         val bundle: DetailsFragmentArgs by navArgs()
-        val result = bundle.result
         val movieId = bundle.movieId
+        val posterPath= bundle.posterPath
+        binding.posterPath = posterPath
 
-        binding.result = result
-        binding.vote = String.format(Locale.US, "%,.1f", result.voteAverage)
+//        binding.vote = String.format(Locale.US, "%,.1f", result.voteAverage)
 
+        binding.imgToolbarBtnBack.setOnClickListener{
+            requireActivity().supportFragmentManager.popBackStack()
+        }
 
         setupRecyclerView()
         requestApiData(movieId)
@@ -52,6 +54,34 @@ class DetailsFragment : Fragment() {
 
     private fun requestApiData(movieId: Int) {
         mainViewModel.getCredits(movieId, moviesViewModel.applyQueriesTVsAndMovies())
+        // Details
+        showProgressBar()
+
+        mainViewModel.movieDetailsResponse.observe(viewLifecycleOwner) { response ->
+            when (response) {
+                is NetworkResult.Success -> {
+                    response.data?.let { detailData ->
+                        binding.result = detailData
+                        binding.category=mainViewModel.processGenres(detailData.genres ?: emptyList())
+                        binding.vote = String.format(Locale.US, "%,.1f", detailData.voteAverage)
+                    }
+                    hideProgressBar()
+                }
+
+                is NetworkResult.Error -> {
+                    Toast.makeText(
+                        requireContext(),
+                        response.message.toString(),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    hideProgressBar()
+                }
+
+                is NetworkResult.Loading -> {
+                    showProgressBar()
+                }
+            }
+        }
 
 // Trending Movies
         mainViewModel.movieCreditsResponse.observe(viewLifecycleOwner) { response ->
@@ -60,9 +90,8 @@ class DetailsFragment : Fragment() {
 
                     response.data?.let {
                         castingAdapter.setData(it)
-
-
                     }
+                    hideProgressBar()
                 }
 
                 is NetworkResult.Error -> {
@@ -74,20 +103,30 @@ class DetailsFragment : Fragment() {
                 }
 
                 is NetworkResult.Loading -> {
-
+                    showProgressBar()
 
                 }
             }
 
 
         }
+
     }
+
 
     fun setupRecyclerView() {
         binding.rVCast.adapter = castingAdapter
 
         binding.rVCast.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+    }
+
+    private fun hideProgressBar() {
+        binding.progressBar.visibility = View.VISIBLE
+    }
+
+    private fun showProgressBar() {
+        binding.progressBar.visibility = View.INVISIBLE
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

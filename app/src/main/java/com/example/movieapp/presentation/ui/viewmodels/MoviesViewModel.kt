@@ -10,7 +10,8 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class MoviesViewModel @Inject constructor(application: Application): AndroidViewModel(application) {
+class MoviesViewModel @Inject constructor(application: Application) :
+    AndroidViewModel(application) {
 
     fun applyQueriesTVsAndMovies(): HashMap<String, String> {
         val queries: HashMap<String, String> = HashMap()
@@ -19,16 +20,6 @@ class MoviesViewModel @Inject constructor(application: Application): AndroidView
 
         return queries
     }
-
-//    fun applyQueriesMoviesForCredits(): HashMap<String,String> {
-//        val queries: HashMap<String, String> = HashMap()
-//
-//        queries[QUERY_API_KEY] = API_KEY
-//
-//        return queries
-//    }
-
-
 
 
 }

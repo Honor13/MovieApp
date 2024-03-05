@@ -20,10 +20,10 @@
         android:label="fragment_details"
         tools:layout="@layout/fragment_details" >
         <argument
-            android:name="result"
-            app:argType="com.example.movieapp.data.models.Result" />
-        <argument
             android:name="movieId"
             app:argType="integer" />
+        <argument
+            android:name="posterPath"
+            app:argType="string" />
     </fragment>
 </navigation>

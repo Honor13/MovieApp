@@ -4,9 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-            <variable
-                name="castResult"
-                type="com.example.movieapp.data.models.moviedetails.Cast" />
+
+        <variable
+            name="castResult"
+            type="com.example.movieapp.data.models.moviecredits.Cast" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -49,11 +50,15 @@
 
                 <TextView
                     android:id="@+id/textView5"
+                    android:text="@{castResult.name}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
                     android:layout_marginBottom="4dp"
-                    android:text="@{castResult.name}"
+                    android:lineSpacingExtra="8dp"
+                    android:maxLines="2"
                     android:textAlignment="center"
                     android:textColor="@color/white"
                     app:layout_constraintBottom_toBottomOf="parent"

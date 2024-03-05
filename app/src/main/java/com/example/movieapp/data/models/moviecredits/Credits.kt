@@ -1,4 +1,4 @@
-package com.example.movieapp.data.models.moviedetails
+package com.example.movieapp.data.models.moviecredits
 
 
 import com.google.gson.annotations.SerializedName
