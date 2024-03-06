@@ -5,7 +5,7 @@
     <data>
             <variable
                 name="result"
-                type="com.example.movieapp.data.models.Result" />
+                type="com.example.movieapp.data.models.movies.Result" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

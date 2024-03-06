@@ -3,7 +3,7 @@ package com.example.movieapp.presentation.ui.adapters
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.movieapp.data.models.Result
+import com.example.movieapp.data.models.movies.Result
 import com.example.movieapp.databinding.ViewpagerLayoutBinding
 import java.util.Locale
 

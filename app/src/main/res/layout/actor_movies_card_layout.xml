@@ -5,8 +5,8 @@
     <data>
 
         <variable
-            name="result"
-            type="com.example.movieapp.data.models.movies.Result" />
+            name="actorMovies"
+            type="com.example.movieapp.data.database.actormovies.Cast" />
         <variable
             name="vote"
             type="String" />
@@ -16,8 +16,8 @@
 
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        movie_id="@{result.id}"
-        posterPath="@{result.posterPath}"
+        movie_id="@{actorMovies.id}"
+        posterPath="@{actorMovies.posterPath}"
         android:padding="5dp">
 
         <androidx.cardview.widget.CardView
@@ -41,7 +41,7 @@
 
                 <ImageView
                     android:id="@+id/trendingImageView"
-                    loadImageFromUrl400="@{result.posterPath}"
+                    loadImageFromUrl400="@{actorMovies.posterPath}"
                     android:layout_width="100dp"
                     android:layout_height="160dp"
                     android:layout_marginStart="4dp"
@@ -90,7 +90,7 @@
                     android:layout_marginTop="4dp"
                     android:layout_marginBottom="8dp"
                     android:maxLines="2"
-                    android:text="@{result.title}"
+                    android:text="@{actorMovies.title}"
                     android:textAlignment="center"
                     android:textColor="@color/white"
                     android:textStyle="bold"

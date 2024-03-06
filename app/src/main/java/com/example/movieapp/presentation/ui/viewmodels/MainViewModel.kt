@@ -7,8 +7,9 @@ import android.net.NetworkCapabilities
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.example.movieapp.data.models.Movies
-import com.example.movieapp.data.models.TVs
+import com.example.movieapp.data.models.actordetails.ActorDetails
+import com.example.movieapp.data.models.movies.Movies
+import com.example.movieapp.data.models.tv.TVs
 import com.example.movieapp.data.models.moviecredits.Credits
 import com.example.movieapp.data.models.moviedetails.DetailsResult
 import com.example.movieapp.data.models.moviedetails.Genre
@@ -36,6 +37,7 @@ class MainViewModel @Inject constructor(
     val movieDetailsResponse: MutableLiveData<NetworkResult<DetailsResult>> = MutableLiveData()
     val tVsDetailsResponse: MutableLiveData<NetworkResult<DetailsTVResult>> = MutableLiveData()
     val tVsCreditsResponse: MutableLiveData<NetworkResult<TvCredits>> = MutableLiveData()
+    val actorDetailsResponse: MutableLiveData<NetworkResult<ActorDetails>> = MutableLiveData()
 
     fun getMovies(queries: Map<String, String>) = viewModelScope.launch {
         getMoviesSafeCall(queries)
@@ -46,14 +48,16 @@ class MainViewModel @Inject constructor(
     }
 
     fun getTvDetails(seriesId: Int, queries: Map<String, String>) = viewModelScope.launch {
-        getTvSeriesDetailsSafeCall(seriesId,queries)
+        getTvSeriesDetailsSafeCall(seriesId, queries)
     }
 
     fun getTvCredits(seriesId: Int, queries: Map<String, String>) = viewModelScope.launch {
-        getTvSeriesCreditsSafeCall(seriesId,queries)
+        getTvSeriesCreditsSafeCall(seriesId, queries)
     }
 
-
+    fun getActorDetails(personId: Int, queries: Map<String, String>) = viewModelScope.launch {
+        getActorDetailsSafeCall(personId, queries)
+    }
 
 
     fun hasInternetConnection(): Boolean {
@@ -72,6 +76,7 @@ class MainViewModel @Inject constructor(
         }
     }
 
+    // TODO (Onur) All HandleResponse Functions will be organized as generic Type :)
     private fun handleMoviesResponse(response: Response<Movies>): NetworkResult<Movies> {
 
         when {
@@ -184,6 +189,7 @@ class MainViewModel @Inject constructor(
             }
         }
     }
+
     private fun handleTvCreditsResponse(response: Response<TvCredits>): NetworkResult<TvCredits> {
         when {
             response.code() == 504 -> {
@@ -204,6 +210,29 @@ class MainViewModel @Inject constructor(
             }
         }
     }
+
+    private fun handleActorDetailsResponse(response: Response<ActorDetails>): NetworkResult<ActorDetails> {
+        when {
+            response.code() == 504 -> {
+                return NetworkResult.Error("Your request to the backend server timed out. Try again.")
+            }
+
+            response.code() == 429 -> {
+                return NetworkResult.Error("API key limited")
+            }
+
+            response.isSuccessful -> {
+                val actorDetails = response.body()
+                return NetworkResult.Success(actorDetails!!)
+            }
+
+            else -> {
+                return NetworkResult.Error(response.message())
+            }
+        }
+    }
+
+
 
     private suspend fun getMoviesSafeCall(queries: Map<String, String>) {
 
@@ -267,14 +296,15 @@ class MainViewModel @Inject constructor(
     private suspend fun getTvSeriesDetailsSafeCall(seriesId: Int, queries: Map<String, String>) {
         tVsDetailsResponse.value = NetworkResult.Loading()
 
-        if (hasInternetConnection()){
+        if (hasInternetConnection()) {
 
             try {
-                val responseTvDetails = repository.remote.getTvDetails(seriesId,queries)
+                val responseTvDetails = repository.remote.getTvDetails(seriesId, queries)
 
                 tVsDetailsResponse.value = handleTvSeriesResponse(responseTvDetails)
             } catch (e: Exception) {
-                tVsDetailsResponse.value =NetworkResult.Error("There was a problem fetching TvSeries data")
+                tVsDetailsResponse.value =
+                    NetworkResult.Error("There was a problem fetching TvSeries data")
             }
 
         }
@@ -287,25 +317,36 @@ class MainViewModel @Inject constructor(
 
         if (hasInternetConnection()) {
             try {
-                val responseTvCredits = repository.remote.getTvCredits(seriesId,queries)
+                val responseTvCredits = repository.remote.getTvCredits(seriesId, queries)
 
                 tVsCreditsResponse.value = handleTvCreditsResponse(responseTvCredits)
-            }catch (e: Exception) {
-                tVsCreditsResponse.value = NetworkResult.Error("There was a problem fetching TvCredits data")
+            } catch (e: Exception) {
+                tVsCreditsResponse.value =
+                    NetworkResult.Error("There was a problem fetching TvCredits data")
+            }
+        }
+    }
+
+    private suspend fun getActorDetailsSafeCall(personId: Int, queries: Map<String, String>) {
+
+        actorDetailsResponse.value = NetworkResult.Loading()
+        if (hasInternetConnection()) {
+            try {
+                val responseActorDetails = repository.remote.getActorDetails(personId,queries)
+
+                actorDetailsResponse.value =handleActorDetailsResponse(responseActorDetails)
+            } catch (e: Exception) {
+                actorDetailsResponse.value = NetworkResult.Error("There was a problem fetching actorDetails data")
             }
         }
     }
 
 
-
-
-
-
-    fun processMoviesGenres(genresList: List<Genre>):String {
+    fun processMoviesGenres(genresList: List<Genre>): String {
         return genresList.joinToString(", ") { it.name }
     }
 
-    fun processSeriesGenres(genresList: List<com.example.movieapp.data.models.tvDetails.Genre>):String {
+    fun processSeriesGenres(genresList: List<com.example.movieapp.data.models.tvDetails.Genre>): String {
         return genresList.joinToString(", ") { it.name }
     }
 }

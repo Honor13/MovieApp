@@ -1,7 +1,8 @@
 package com.example.movieapp.data.network
 
-import com.example.movieapp.data.models.Movies
-import com.example.movieapp.data.models.TVs
+import com.example.movieapp.data.models.actordetails.ActorDetails
+import com.example.movieapp.data.models.movies.Movies
+import com.example.movieapp.data.models.tv.TVs
 import com.example.movieapp.data.models.moviecredits.Credits
 import com.example.movieapp.data.models.moviedetails.DetailsResult
 import com.example.movieapp.data.models.tvDetails.DetailsTVResult
@@ -55,10 +56,18 @@ interface MoviesApi {
         @Path("series_id") seriesId: Int,
         @QueryMap queries: Map<String, String>
     ):Response<DetailsTVResult>
-    //https://api.themoviedb.org/3/tv/206829/credits?language=en-US&api_key=7c646d0a3ce431c66c2408250dbc2bfe
+
     @GET("tv/{series_id}/credits")
     suspend fun getTvCredits(
         @Path("series_id") seriesId: Int,
         @QueryMap queries: Map<String, String>
     ): Response<TvCredits>
+
+    //https://api.themoviedb.org/3/person/person_id?language=en-US&api_key=7c646d0a3ce431c66c2408250dbc2bfe
+    @GET("person/{person_id}?language=en-US")
+    suspend fun getActorDetails(
+        @Path("person_id") personId: Int,
+        @QueryMap qeries: Map<String, String>
+    ): Response<ActorDetails>
+
 }

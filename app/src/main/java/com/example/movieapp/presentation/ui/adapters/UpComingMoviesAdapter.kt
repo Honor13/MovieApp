@@ -4,8 +4,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.example.movieapp.data.models.Movies
-import com.example.movieapp.data.models.Result
+import com.example.movieapp.data.models.movies.Movies
+import com.example.movieapp.data.models.movies.Result
 import com.example.movieapp.databinding.ComingSoonCardLayoutBinding
 import com.example.movieapp.util.MoviesDiffUtil
 

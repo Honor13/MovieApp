@@ -4,8 +4,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.example.movieapp.data.models.ResultTV
-import com.example.movieapp.data.models.TVs
+import com.example.movieapp.data.models.tv.ResultTV
+import com.example.movieapp.data.models.tv.TVs
 import com.example.movieapp.databinding.TrendingTvCardLayoutBinding
 import com.example.movieapp.util.MoviesDiffUtil
 import java.util.Locale
