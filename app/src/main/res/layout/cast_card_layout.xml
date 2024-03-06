@@ -8,12 +8,14 @@
         <variable
             name="castResult"
             type="com.example.movieapp.data.models.moviecredits.Cast" />
+        <variable
+            name="profilePath"
+            type="String" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        onsetOnClickListener="@{castResult.id}">
+        android:layout_height="wrap_content">
 
         <androidx.cardview.widget.CardView
             android:layout_width="wrap_content"

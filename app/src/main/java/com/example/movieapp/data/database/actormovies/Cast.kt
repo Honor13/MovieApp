@@ -40,7 +40,7 @@ data class Cast(
     val popularity: Double,
     @SerializedName("poster_path")
     @Expose
-    val posterPath: String,
+    val posterPath: String?,
     @SerializedName("release_date")
     @Expose
     val releaseDate: String,

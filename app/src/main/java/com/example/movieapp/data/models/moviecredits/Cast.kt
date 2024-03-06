@@ -40,5 +40,5 @@ data class Cast(
     val popularity: Double,
     @SerializedName("profile_path")
     @Expose
-    val profilePath: String
+    val profilePath: String?
 )

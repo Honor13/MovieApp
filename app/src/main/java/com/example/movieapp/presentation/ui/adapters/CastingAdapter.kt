@@ -2,11 +2,13 @@ package com.example.movieapp.presentation.ui.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.movieapp.data.models.moviecredits.Cast
 import com.example.movieapp.data.models.moviecredits.Credits
 import com.example.movieapp.databinding.CastCardLayoutBinding
+import com.example.movieapp.presentation.ui.fragments.details.MovieDetailsFragmentDirections
 import com.example.movieapp.util.MoviesDiffUtil
 
 class CastingAdapter:RecyclerView.Adapter<CastingAdapter.MyViewHolder>(){
@@ -15,6 +17,14 @@ class CastingAdapter:RecyclerView.Adapter<CastingAdapter.MyViewHolder>(){
 
         fun bind(credits: Cast){
             binding.castResult = credits
+            binding.profilePath = credits.profilePath
+            binding.constLayoutMovies.setOnClickListener {
+                //TODO (Onr) adapter içerisine ocItemClickLickListener eklenecek
+                if (credits.profilePath != null) {
+                    val action = MovieDetailsFragmentDirections.actionDetailsFragmentToActorDetailsFragment(credits.id,credits.profilePath)
+                    Navigation.findNavController(it).navigate(action)
+                }
+            }
             binding.executePendingBindings()
         }
 
@@ -41,7 +51,7 @@ class CastingAdapter:RecyclerView.Adapter<CastingAdapter.MyViewHolder>(){
     }
 
     fun setData(newData: Credits) {
-        val trendingMoviesDiffUtil = MoviesDiffUtil(castings, newData.crew)
+        val trendingMoviesDiffUtil = MoviesDiffUtil(castings, newData.cast)
         val trendingDiffUtilResult = DiffUtil.calculateDiff(trendingMoviesDiffUtil)
         castings = newData.cast
         trendingDiffUtilResult.dispatchUpdatesTo(this)

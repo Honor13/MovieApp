@@ -1,5 +1,6 @@
 package com.example.movieapp.data.network
 
+import com.example.movieapp.data.database.actormovies.ActorMoviesResult
 import com.example.movieapp.data.models.actordetails.ActorDetails
 import com.example.movieapp.data.models.movies.Movies
 import com.example.movieapp.data.models.tv.TVs
@@ -52,6 +53,10 @@ class RemoteDataSource @Inject constructor(
 
     suspend fun getActorDetails(personId: Int, queries: Map<String, String>): Response<ActorDetails>{
         return moviesApi.getActorDetails(personId,queries)
+    }
+
+    suspend fun getActorMovies(personId: Int, queries: Map<String, String>): Response<ActorMoviesResult> {
+        return moviesApi.getActorMovies(personId,queries)
     }
 
 

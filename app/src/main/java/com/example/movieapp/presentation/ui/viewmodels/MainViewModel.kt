@@ -7,6 +7,7 @@ import android.net.NetworkCapabilities
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.example.movieapp.data.database.actormovies.ActorMoviesResult
 import com.example.movieapp.data.models.actordetails.ActorDetails
 import com.example.movieapp.data.models.movies.Movies
 import com.example.movieapp.data.models.tv.TVs
@@ -38,6 +39,7 @@ class MainViewModel @Inject constructor(
     val tVsDetailsResponse: MutableLiveData<NetworkResult<DetailsTVResult>> = MutableLiveData()
     val tVsCreditsResponse: MutableLiveData<NetworkResult<TvCredits>> = MutableLiveData()
     val actorDetailsResponse: MutableLiveData<NetworkResult<ActorDetails>> = MutableLiveData()
+    val actorMoviesResponse: MutableLiveData<NetworkResult<ActorMoviesResult>> = MutableLiveData()
 
     fun getMovies(queries: Map<String, String>) = viewModelScope.launch {
         getMoviesSafeCall(queries)
@@ -58,6 +60,12 @@ class MainViewModel @Inject constructor(
     fun getActorDetails(personId: Int, queries: Map<String, String>) = viewModelScope.launch {
         getActorDetailsSafeCall(personId, queries)
     }
+
+    fun getActorMovies(personId: Int, queries: Map<String, String>) = viewModelScope.launch {
+        getActorMoviesResponseSafeCall(personId,queries)
+    }
+
+
 
 
     fun hasInternetConnection(): Boolean {
@@ -231,6 +239,26 @@ class MainViewModel @Inject constructor(
             }
         }
     }
+    private fun handleActorMoviesResponse(response: Response<ActorMoviesResult>): NetworkResult<ActorMoviesResult> {
+        when {
+            response.code() == 504 -> {
+                return NetworkResult.Error("Your request to the backend server timed out. Try again.")
+            }
+
+            response.code() == 429 -> {
+                return NetworkResult.Error("API key limited")
+            }
+
+            response.isSuccessful -> {
+                val actorMovies = response.body()
+                return NetworkResult.Success(actorMovies!!)
+            }
+
+            else -> {
+                return NetworkResult.Error(response.message())
+            }
+        }
+    }
 
 
 
@@ -337,6 +365,20 @@ class MainViewModel @Inject constructor(
                 actorDetailsResponse.value =handleActorDetailsResponse(responseActorDetails)
             } catch (e: Exception) {
                 actorDetailsResponse.value = NetworkResult.Error("There was a problem fetching actorDetails data")
+            }
+        }
+    }
+
+    private suspend fun getActorMoviesResponseSafeCall(personId: Int, queries: Map<String, String>) {
+
+        actorMoviesResponse.value = NetworkResult.Loading()
+        if (hasInternetConnection()) {
+            try {
+                val responseActorMovies = repository.remote.getActorMovies(personId,queries)
+
+                actorMoviesResponse.value = handleActorMoviesResponse(responseActorMovies)
+            } catch (e: Exception) {
+               actorMoviesResponse.value = NetworkResult.Error("There was a problem fetching actorMovies data")
             }
         }
     }

@@ -10,14 +10,16 @@
         <variable
             name="vote"
             type="String" />
+        <variable
+            name="posterPath"
+            type="String" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
 
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        movie_id="@{actorMovies.id}"
-        posterPath="@{actorMovies.posterPath}"
         android:padding="5dp">
 
         <androidx.cardview.widget.CardView
