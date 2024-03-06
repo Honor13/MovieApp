@@ -9,8 +9,10 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.movieapp.R
 import com.example.movieapp.databinding.FragmentTvSeriesDetailsBinding
+import com.example.movieapp.presentation.ui.adapters.TvSeriesCastingAdapter
 import com.example.movieapp.presentation.ui.viewmodels.MainViewModel
 import com.example.movieapp.presentation.ui.viewmodels.MoviesViewModel
 import com.example.movieapp.util.NetworkResult
@@ -23,6 +25,8 @@ class TvSeriesDetailsFragment : Fragment() {
     private lateinit var binding: FragmentTvSeriesDetailsBinding
     private lateinit var mainViewModel: MainViewModel
     private lateinit var moviesViewModel: MoviesViewModel
+
+    private val creditsAdapter by lazy { TvSeriesCastingAdapter() }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,6 +42,7 @@ class TvSeriesDetailsFragment : Fragment() {
 
         binding.posterPath = posterPath
 
+        setupRecyclerView()
         requestApiData(movieId)
 
 
@@ -53,6 +58,7 @@ class TvSeriesDetailsFragment : Fragment() {
 
     private fun requestApiData(seriesId: Int) {
         mainViewModel.getTvDetails(seriesId, moviesViewModel.applyQueriesTVsAndMovies())
+        mainViewModel.getTvCredits(seriesId,moviesViewModel.applyQueriesTVsAndMovies())
         // Details
         showProgressBar()
 
@@ -82,6 +88,33 @@ class TvSeriesDetailsFragment : Fragment() {
                 }
             }
         }
+// cast photo
+        mainViewModel.tVsCreditsResponse.observe(viewLifecycleOwner) { response ->
+            when (response) {
+                is NetworkResult.Success -> {
+
+                    response.data?.let {
+                        creditsAdapter.setData(it)
+                    }
+                    hideProgressBar()
+                }
+
+                is NetworkResult.Error -> {
+                    Toast.makeText(
+                        requireContext(),
+                        response.message.toString(),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+
+                is NetworkResult.Loading -> {
+                    showProgressBar()
+
+                }
+            }
+
+
+        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -96,5 +129,14 @@ class TvSeriesDetailsFragment : Fragment() {
     private fun showProgressBar() {
         binding.progressBar.visibility = View.INVISIBLE
     }
+
+    fun setupRecyclerView() {
+        binding.rVCast.adapter = creditsAdapter
+
+        binding.rVCast.layoutManager =
+            LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+    }
+
+
 
 }

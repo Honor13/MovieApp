@@ -13,13 +13,14 @@ import com.example.movieapp.data.models.moviecredits.Credits
 import com.example.movieapp.data.models.moviedetails.DetailsResult
 import com.example.movieapp.data.models.moviedetails.Genre
 import com.example.movieapp.data.models.tvDetails.DetailsTVResult
+import com.example.movieapp.data.models.tvcredits.TvCredits
 import com.example.movieapp.data.network.Repository
 import com.example.movieapp.util.NetworkResult
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import retrofit2.Response
 import javax.inject.Inject
-// TODO (Onur) Code Smells Düzeltilecek
+
 @HiltViewModel
 class MainViewModel @Inject constructor(
     private val repository: Repository,
@@ -34,6 +35,7 @@ class MainViewModel @Inject constructor(
     val movieCreditsResponse: MutableLiveData<NetworkResult<Credits>> = MutableLiveData()
     val movieDetailsResponse: MutableLiveData<NetworkResult<DetailsResult>> = MutableLiveData()
     val tVsDetailsResponse: MutableLiveData<NetworkResult<DetailsTVResult>> = MutableLiveData()
+    val tVsCreditsResponse: MutableLiveData<NetworkResult<TvCredits>> = MutableLiveData()
 
     fun getMovies(queries: Map<String, String>) = viewModelScope.launch {
         getMoviesSafeCall(queries)
@@ -47,13 +49,11 @@ class MainViewModel @Inject constructor(
         getTvSeriesDetailsSafeCall(seriesId,queries)
     }
 
-//    fun getTvCredits(seriesId: Int, queries: Map<String, String>) = viewModelScope.launch {
-//        getTvCreditsSafeCall(seriesId,queries)
-//    }
-//
-//    private fun getTvCreditsSafeCall(seriesId: Int, queries: Map<String, String>) {
-//
-//    }
+    fun getTvCredits(seriesId: Int, queries: Map<String, String>) = viewModelScope.launch {
+        getTvSeriesCreditsSafeCall(seriesId,queries)
+    }
+
+
 
 
     fun hasInternetConnection(): Boolean {
@@ -184,6 +184,26 @@ class MainViewModel @Inject constructor(
             }
         }
     }
+    private fun handleTvCreditsResponse(response: Response<TvCredits>): NetworkResult<TvCredits> {
+        when {
+            response.code() == 504 -> {
+                return NetworkResult.Error("Your request to the backend server timed out. Try again.")
+            }
+
+            response.code() == 429 -> {
+                return NetworkResult.Error("API key limited")
+            }
+
+            response.isSuccessful -> {
+                val seriesCredits = response.body()
+                return NetworkResult.Success(seriesCredits!!)
+            }
+
+            else -> {
+                return NetworkResult.Error(response.message())
+            }
+        }
+    }
 
     private suspend fun getMoviesSafeCall(queries: Map<String, String>) {
 
@@ -246,7 +266,7 @@ class MainViewModel @Inject constructor(
 
     private suspend fun getTvSeriesDetailsSafeCall(seriesId: Int, queries: Map<String, String>) {
         tVsDetailsResponse.value = NetworkResult.Loading()
-//TODO (response here)
+
         if (hasInternetConnection()){
 
             try {
@@ -259,6 +279,21 @@ class MainViewModel @Inject constructor(
 
         }
 
+    }
+
+    private suspend fun getTvSeriesCreditsSafeCall(seriesId: Int, queries: Map<String, String>) {
+
+        tVsCreditsResponse.value = NetworkResult.Loading()
+
+        if (hasInternetConnection()) {
+            try {
+                val responseTvCredits = repository.remote.getTvCredits(seriesId,queries)
+
+                tVsCreditsResponse.value = handleTvCreditsResponse(responseTvCredits)
+            }catch (e: Exception) {
+                tVsCreditsResponse.value = NetworkResult.Error("There was a problem fetching TvCredits data")
+            }
+        }
     }
 
 
