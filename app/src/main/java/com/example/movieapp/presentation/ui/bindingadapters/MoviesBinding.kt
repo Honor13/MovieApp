@@ -7,6 +7,7 @@ import androidx.navigation.findNavController
 import coil.load
 import com.example.movieapp.R
 import com.example.movieapp.presentation.ui.fragments.bottomnavholder.BottomAppBarHolderFragmentDirections
+import com.example.movieapp.presentation.ui.fragments.details.MovieDetailsFragmentDirections
 import com.example.movieapp.util.Constants.Companion.IMAGES_BASE_URL
 import com.example.movieapp.util.Constants.Companion.IMAGE_200
 import com.example.movieapp.util.Constants.Companion.IMAGE_400
@@ -16,6 +17,15 @@ import com.example.movieapp.util.Constants.Companion.IMAGE_500
 class MoviesBinding {
 
     companion object {
+
+        @BindingAdapter("onsetOnClickListener")
+        @JvmStatic
+        fun onActorDetailsonClickListener(personLayout: ConstraintLayout, personId: Int){
+            personLayout.setOnClickListener {
+                val action = MovieDetailsFragmentDirections.actionDetailsFragmentToActorDetailsFragment(personId)
+                personLayout.findNavController().navigate(action)
+            }
+        }
 
         @BindingAdapter("tVseries_id","tVposterPath", requireAll = false)
         @JvmStatic

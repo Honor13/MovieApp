@@ -28,6 +28,9 @@
         <argument
             android:name="posterPath"
             app:argType="string" />
+        <action
+            android:id="@+id/action_detailsFragment_to_actorDetailsFragment"
+            app:destination="@id/actorDetailsFragment" />
     </fragment>
     <fragment
         android:id="@+id/tvSeriesDetailsFragment"
@@ -38,6 +41,15 @@
             app:argType="string" />
         <argument
             android:name="movieId"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/actorDetailsFragment"
+        android:name="com.example.movieapp.presentation.ui.fragments.details.ActorDetailsFragment"
+        android:label="fragment_actor_details"
+        tools:layout="@layout/fragment_actor_details" >
+        <argument
+            android:name="person_id"
             app:argType="integer" />
     </fragment>
 </navigation>
