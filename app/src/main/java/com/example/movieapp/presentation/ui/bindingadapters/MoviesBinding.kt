@@ -16,16 +16,6 @@ import com.example.movieapp.util.Constants.Companion.IMAGE_500
 class MoviesBinding {
 
     companion object {
-
-//        @BindingAdapter("actorPersonId","actorProfilePath", requireAll = false)
-//        @JvmStatic
-//        fun onActorDetailsonClickListener(personLayout: ConstraintLayout, actorPersonId: Int, actorProfilePath: String){
-//            personLayout.setOnClickListener {
-//                val action = MovieDetailsFragmentDirections.actionDetailsFragmentToActorDetailsFragment(actorPersonId,actorProfilePath)
-//                personLayout.findNavController().navigate(action)
-//            }
-//        }
-
         @BindingAdapter("tVseries_id","tVposterPath", requireAll = false)
         @JvmStatic
         fun onTVSeriesSetOnClickListener(moviesRowLayout: ConstraintLayout,seriesId: Int,posterPath: String){
@@ -37,20 +27,6 @@ class MoviesBinding {
                 moviesRowLayout.findNavController().navigate(action)
             }
         }
-
-//        @BindingAdapter("actMovieId","actPosterPath", requireAll = false)
-//        @JvmStatic
-//        fun onActMoviesSetOnClickListener(moviesRowLayout: ConstraintLayout,actMovieId: Int,actPosterPath: String?){
-//            if (actPosterPath != null) {
-//                val action = ActorDetailsFragmentDirections.actionActorDetailsFragmentToDetailsFragment(
-//                    actMovieId,
-//                    actPosterPath
-//                )
-//                moviesRowLayout.findNavController().navigate(action)
-//            } else {
-//                // Handle null case, maybe display a placeholder image or show an error message
-//            }
-//        }
 
         @BindingAdapter("movie_id","posterPath", requireAll = false)
         @JvmStatic

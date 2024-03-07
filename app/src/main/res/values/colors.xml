@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <color name="colorPrimary">#6200EA</color>
+    <color name="darkGray">#4B4B4B</color>
+
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="red">#DC2222</color>
+
+    <color name="dateColor">#4C4677</color>
+
     <color name="bottomAppBarBackgroundColor">#020000</color>
     <color name="bottomAppBarItemActive">#DC2222</color>
     <color name="bottomAppBarItemPassive">#FF9800</color>
@@ -15,4 +22,11 @@
     <color name="transparentImdbBGColor">#90000000</color>
     <color name="transparent">#00000000</color>
     <color name="textLightGray">#80E8E5E5</color>
+<!--    <color name="lightGray">#F9F9F9</color>-->
+
+    // Custom Chip Style
+    <color name="checkedChipBackGroundColor">@color/red</color>
+    <color name="chipBackGroundColor">#303C4B</color>
+    <color name="checkedChipTextColor">@color/imdbTextColor</color>
+    <color name="chipTextColor">@color/imdbTextColor</color>
 </resources>

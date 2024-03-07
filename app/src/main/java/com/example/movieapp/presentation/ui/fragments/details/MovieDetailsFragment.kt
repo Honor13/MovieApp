@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.movieapp.R
@@ -44,6 +45,10 @@ class MovieDetailsFragment : Fragment() {
 
         binding.imgToolbarBtnBack.setOnClickListener{
             requireActivity().supportFragmentManager.popBackStack()
+        }
+
+        binding.buttonBookNow.setOnClickListener {
+            Navigation.findNavController(it).navigate(R.id.action_detailsFragment_to_bookingScheduleFragment)
         }
 
         setupRecyclerView()

@@ -230,7 +230,7 @@
             <!-- BottomAppBar içeriği -->
 
             <Button
-                android:id="@+id/addToCartButton"
+                android:id="@+id/buttonBookNow"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="10dp"
