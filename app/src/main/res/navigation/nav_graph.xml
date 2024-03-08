@@ -65,5 +65,13 @@
         android:id="@+id/bookingScheduleFragment"
         android:name="com.example.movieapp.presentation.ui.fragments.bookingschedule.BookingScheduleFragment"
         android:label="fragment_booking_schedule"
-        tools:layout="@layout/fragment_booking_schedule" />
+        tools:layout="@layout/fragment_booking_schedule" >
+        <action
+            android:id="@+id/action_bookingScheduleFragment_to_bookNowFragment"
+            app:destination="@id/bookNowFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/bookNowFragment"
+        android:name="com.example.movieapp.presentation.ui.fragments.booknow.BookNowFragment"
+        android:label="BookNowFragment" />
 </navigation>

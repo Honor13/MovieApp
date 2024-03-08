@@ -10,6 +10,7 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import com.example.movieapp.R
 import com.example.movieapp.databinding.FragmentBookingScheduleBinding
 import com.example.movieapp.presentation.ui.viewmodels.BookingViewModel
@@ -39,6 +40,10 @@ class BookingScheduleFragment : Fragment() {
             }
         }
 
+        binding.button2.setOnClickListener {
+            Navigation.findNavController(it).navigate(R.id.action_bookingScheduleFragment_to_bookNowFragment)
+        }
+
 
 
         binding.spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
@@ -47,7 +52,7 @@ class BookingScheduleFragment : Fragment() {
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
-                // Herhangi bir şey seçilmediğinde yapılacak işlemler
+
             }
         }
 

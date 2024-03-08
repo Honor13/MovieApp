@@ -8,7 +8,8 @@
     <color name="white">#FFFFFFFF</color>
     <color name="red">#DC2222</color>
 
-    <color name="dateColor">#4C4677</color>
+
+    <color name="dateColor">#8983B8</color>
 
     <color name="bottomAppBarBackgroundColor">#020000</color>
     <color name="bottomAppBarItemActive">#DC2222</color>
