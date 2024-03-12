@@ -7,7 +7,7 @@ import android.net.NetworkCapabilities
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.example.movieapp.data.database.actormovies.ActorMoviesResult
+import com.example.movieapp.data.models.actormovies.ActorMoviesResult
 import com.example.movieapp.data.models.actordetails.ActorDetails
 import com.example.movieapp.data.models.movies.Movies
 import com.example.movieapp.data.models.tv.TVs

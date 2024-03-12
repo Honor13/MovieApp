@@ -6,7 +6,7 @@
 
         <variable
             name="actorMovies"
-            type="com.example.movieapp.data.database.actormovies.Cast" />
+            type="com.example.movieapp.data.models.actormovies.Cast" />
         <variable
             name="vote"
             type="String" />

@@ -6,8 +6,8 @@ import android.view.ViewGroup
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.example.movieapp.data.database.actormovies.ActorMoviesResult
-import com.example.movieapp.data.database.actormovies.Cast
+import com.example.movieapp.data.models.actormovies.ActorMoviesResult
+import com.example.movieapp.data.models.actormovies.Cast
 import com.example.movieapp.databinding.ActorMoviesCardLayoutBinding
 import com.example.movieapp.presentation.ui.fragments.details.ActorDetailsFragmentDirections
 import com.example.movieapp.util.MoviesDiffUtil
