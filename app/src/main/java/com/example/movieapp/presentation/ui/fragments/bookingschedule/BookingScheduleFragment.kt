@@ -11,14 +11,16 @@ import android.widget.ArrayAdapter
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.navArgs
 import com.example.movieapp.R
 import com.example.movieapp.databinding.FragmentBookingScheduleBinding
 import com.example.movieapp.presentation.ui.viewmodels.BookingViewModel
+import java.util.Locale
 
 class BookingScheduleFragment : Fragment() {
 
     private lateinit var binding: FragmentBookingScheduleBinding
-    private val dateArray = ArrayList<String>()
+
     private lateinit var dateAdapter:ArrayAdapter<String>
     private lateinit var viewModel: BookingViewModel
     override fun onCreateView(
@@ -27,8 +29,14 @@ class BookingScheduleFragment : Fragment() {
     ): View {
         binding = DataBindingUtil.inflate(layoutInflater,R.layout.fragment_booking_schedule,container,false)
 
-        binding.lifecycleOwner = viewLifecycleOwner
+
         viewModel.loadItems()
+
+        val bundle : BookingScheduleFragmentArgs by navArgs()
+        binding.detailsResult = bundle.detailsResult
+        binding.vote =  String.format(Locale.US,"%,.1f",bundle.detailsResult.voteAverage)
+
+
 
         // spinner item observe
         viewModel.items.observe(viewLifecycleOwner) { items ->

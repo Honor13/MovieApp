@@ -384,8 +384,8 @@ class MainViewModel @Inject constructor(
     }
 
 
-    fun processMoviesGenres(genresList: List<Genre>): String {
-        return genresList.joinToString(", ") { it.name }
+    fun processMoviesGenres(genresList: List<Genre>): String { //Details Result nullable olunca ?
+        return genresList.joinToString(", ") { it.name!! }
     }
 
     fun processSeriesGenres(genresList: List<com.example.movieapp.data.models.tvDetails.Genre>): String {

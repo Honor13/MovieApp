@@ -12,6 +12,7 @@ import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.movieapp.R
+import com.example.movieapp.data.models.moviedetails.DetailsResult
 import com.example.movieapp.databinding.FragmentDetailsBinding
 import com.example.movieapp.presentation.ui.adapters.CastingAdapter
 import com.example.movieapp.presentation.ui.viewmodels.MainViewModel
@@ -28,6 +29,9 @@ class MovieDetailsFragment : Fragment() {
 
     private lateinit var mainViewModel: MainViewModel
     private lateinit var moviesViewModel: MoviesViewModel
+
+    private var actionDetailsResult: DetailsResult? = null
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -48,7 +52,10 @@ class MovieDetailsFragment : Fragment() {
         }
 
         binding.buttonBookNow.setOnClickListener {
-            Navigation.findNavController(it).navigate(R.id.action_detailsFragment_to_bookingScheduleFragment)
+            actionDetailsResult?.let { result ->
+                val action = MovieDetailsFragmentDirections.actionDetailsFragmentToBookingScheduleFragment(result)
+                Navigation.findNavController(it).navigate(action)
+            }
         }
 
         setupRecyclerView()
@@ -67,6 +74,7 @@ class MovieDetailsFragment : Fragment() {
                 is NetworkResult.Success -> {
                     response.data?.let { detailData ->
                         binding.result = detailData
+                        actionDetailsResult = detailData
                         binding.category=mainViewModel.processMoviesGenres(detailData.genres ?: emptyList())
                         binding.vote = String.format(Locale.US, "%,.1f", detailData.voteAverage)
                     }
@@ -139,5 +147,7 @@ class MovieDetailsFragment : Fragment() {
         mainViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
         moviesViewModel = ViewModelProvider(this).get(MoviesViewModel::class.java)
     }
+
+
 
 }

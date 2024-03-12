@@ -5,9 +5,13 @@
 
     <data>
         <variable
-            name="viewModel"
-            type="com.example.movieapp.presentation.ui.viewmodels.BookingViewModel" />
+            name="detailsResult"
+            type="com.example.movieapp.data.models.moviedetails.DetailsResult" />
+        <variable
+            name="vote"
+            type="String" />
     </data>
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -18,7 +22,9 @@
         <ImageView
             android:id="@+id/imageView7"
             android:layout_width="0dp"
-            android:layout_height="210dp"
+            loadImageFromUrl500="@{detailsResult.posterPath}"
+            android:layout_height="wrap_content"
+
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
@@ -40,8 +46,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:text="8.4"
-            android:textColor="@color/textLightGray"
+            android:text="@{vote}"
+            android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="@+id/textView10"
             app:layout_constraintStart_toEndOf="@+id/textView10"
             app:layout_constraintTop_toTopOf="@+id/textView10" />
@@ -52,7 +58,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:text="Movie Title"
+            android:text="@{detailsResult.title}"
             android:textColor="@color/white"
             android:textSize="20sp"
             android:textStyle="bold"
@@ -75,7 +81,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="16dp"
             android:text="Stardust Cinema"
             android:textColor="@color/white"
             android:textSize="18sp"
@@ -88,7 +94,7 @@
             android:layout_width="395dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             app:chipSpacingVertical="8dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView14"
@@ -119,7 +125,7 @@
                 android:layout_height="wrap_content"
                 android:text="11:00"
                 android:textSize="12sp"
-                app:chipIcon="@drawable/d3"/>
+                app:chipIcon="@drawable/d3" />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/starDustDate13"
@@ -136,7 +142,7 @@
                 android:layout_height="wrap_content"
                 android:text="13:00"
                 android:textSize="12sp"
-                app:chipIcon="@drawable/d3"/>
+                app:chipIcon="@drawable/d3" />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/starDustDate15"
@@ -153,6 +159,7 @@
                 android:layout_height="wrap_content"
                 android:text="17:00"
                 android:textSize="12sp" />
+
             <com.google.android.material.chip.Chip
                 android:id="@+id/starDust3DDate19"
                 style="@style/CustomChipStyle"
@@ -160,7 +167,7 @@
                 android:layout_height="wrap_content"
                 android:text="19:00"
                 android:textSize="12sp"
-                app:chipIcon="@drawable/d3"/>
+                app:chipIcon="@drawable/d3" />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/starDustDate19"
@@ -171,7 +178,6 @@
                 android:textSize="12sp" />
 
 
-
             <com.google.android.material.chip.Chip
                 android:id="@+id/starDust3DDate21"
                 style="@style/CustomChipStyle"
@@ -179,7 +185,7 @@
                 android:layout_height="wrap_content"
                 android:text="21:00"
                 android:textSize="12sp"
-                app:chipIcon="@drawable/d3"/>
+                app:chipIcon="@drawable/d3" />
 
 
         </com.google.android.material.chip.ChipGroup>
@@ -203,7 +209,7 @@
             android:layout_width="395dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             app:chipSpacingVertical="8dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView15"
@@ -227,8 +233,7 @@
                 android:layout_height="wrap_content"
                 android:text="09:00"
                 android:textSize="12sp"
-                app:chipIcon="@drawable/d3"/>
-
+                app:chipIcon="@drawable/d3" />
 
 
             <com.google.android.material.chip.Chip
@@ -254,7 +259,7 @@
                 android:layout_height="wrap_content"
                 android:text="13:00"
                 android:textSize="12sp"
-                app:chipIcon="@drawable/d3"/>
+                app:chipIcon="@drawable/d3" />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/cosmosDate15"
@@ -279,15 +284,15 @@
                 android:layout_height="wrap_content"
                 android:text="17:00"
                 android:textSize="12sp"
-                app:chipIcon="@drawable/d3"/>
+                app:chipIcon="@drawable/d3" />
+
             <com.google.android.material.chip.Chip
                 android:id="@+id/cosmosDate21"
                 style="@style/CustomChipStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="21:00"
-                android:textSize="12sp"
-                 />
+                android:textSize="12sp" />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/cosmos3DDate21"
@@ -301,6 +306,8 @@
 
         </com.google.android.material.chip.ChipGroup>
 
+
+
         <Button
             android:id="@+id/button2"
             android:layout_width="match_parent"
@@ -312,7 +319,6 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent" />
 
 
