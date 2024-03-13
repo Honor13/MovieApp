@@ -5,6 +5,26 @@
 
     <data>
 
+        <variable
+            name="movie"
+            type="com.example.movieapp.data.models.moviedetails.DetailsResult" />
+
+        <variable
+            name="vote"
+            type="String" />
+
+        <variable
+            name="date"
+            type="String" />
+
+        <variable
+            name="time"
+            type="String" />
+
+        <variable
+            name="movieTheaterName"
+            type="String" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -13,36 +33,98 @@
         android:background="@color/black"
         tools:context=".presentation.ui.fragments.booknow.BookNowFragment">
 
+        <TextView
+            android:id="@+id/textView27"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="Imdb: "
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewMovieTitle" />
+
+        <TextView
+            android:id="@+id/textView28"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@{vote}"
+            app:layout_constraintStart_toEndOf="@+id/textView27"
+            app:layout_constraintTop_toTopOf="@+id/textView27" />
+
+        <TextView
+            android:id="@+id/textViewMovieTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="64dp"
+            android:text="@{movie.title}"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textViewReleaseDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:text="@{movie.releaseDate}"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toTopOf="@+id/constLayoutSeats"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:id="@+id/textViewTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="16dp"
+            android:textColor="@color/white"
+            android:text="@{time}"
+            app:layout_constraintBottom_toTopOf="@+id/constLayoutSeats"
+            app:layout_constraintStart_toEndOf="@+id/textView16" />
+
+        <TextView
+            android:id="@+id/textView16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="16dp"
+            android:textSize="12sp"
+            android:text="Session Time"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toTopOf="@+id/constLayoutSeats"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/textView17"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="16dp"
+            android:textSize="12sp"
+            android:text="release date:"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toTopOf="@+id/constLayoutSeats"
+            app:layout_constraintEnd_toStartOf="@+id/textViewReleaseDate" />
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constLayoutSeats"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="190dp"
+            android:layout_marginTop="220dp"
             android:background="#182033"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-
             <!--Sütunlar  -->
-            <!--Sütun Text A  -->
-
-
-            <TextView
-                android:id="@+id/textView21"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="36dp"
-                android:text="A"
-                android:textColor="@color/white"
-                android:textSize="12sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-
-            <!-- SÜTUNLAR -->
+            <!--Sütun Text rakamlar  -->
 
             <TextView
                 android:id="@+id/textView1"
@@ -176,7 +258,21 @@
                 app:layout_constraintEnd_toEndOf="@+id/A12"
                 app:layout_constraintStart_toStartOf="@+id/A12"
                 app:layout_constraintTop_toTopOf="@+id/textView11" />
+
             <!--SATIRLAR TextView-->
+
+            <TextView
+                android:id="@+id/textView21"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="36dp"
+                android:text="A"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
             <TextView
                 android:id="@+id/textView22"
                 android:layout_width="wrap_content"
@@ -976,59 +1072,9 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <TextView
-            android:id="@+id/textView27"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="32dp"
-            android:text="Imdb: "
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/textView28"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:text="8.4"
-            app:layout_constraintStart_toEndOf="@+id/textView27"
-            app:layout_constraintTop_toTopOf="@+id/textView27" />
 
-        <TextView
-            android:id="@+id/textViewMovieTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:textColor="@color/white"
-            android:textStyle="bold"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
-            android:text="Movie Title"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView27" />
 
-        <TextView
-            android:id="@+id/textViewReleaseDate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:textSize="12sp"
-            android:textColor="@color/white"
-            android:layout_marginBottom="16dp"
-            android:text="Release Date"
-            app:layout_constraintBottom_toTopOf="@+id/constLayoutSeats"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <TextView
-            android:id="@+id/textViewTime"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginBottom="16dp"
-            android:text="Time"
-            app:layout_constraintBottom_toTopOf="@+id/constLayoutSeats"
-            app:layout_constraintStart_toEndOf="@+id/textViewReleaseDate" />
 
 
         <androidx.cardview.widget.CardView
@@ -1054,12 +1100,12 @@
                 app:layout_constraintVertical_bias="0.5">
 
                 <TextView
-                    android:id="@+id/textView35"
+                    android:id="@+id/textViewMovieTheaterName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:text="Movie Theater Name"
+                    android:layout_marginTop="4dp"
+                    android:text="@{movieTheaterName}"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -1077,10 +1123,10 @@
                     android:id="@+id/textView37"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="64dp"
+                    android:layout_marginStart="200dp"
                     android:text="Total: "
                     app:layout_constraintBottom_toBottomOf="@+id/textView36"
-                    app:layout_constraintStart_toEndOf="@+id/textView35"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/textView36" />
 
                 <TextView
@@ -1100,16 +1146,16 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="18dp"
-                    android:text="../../.."
+                    android:text="@{date}"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView35" />
+                    app:layout_constraintTop_toBottomOf="@+id/textViewMovieTheaterName" />
 
                 <TextView
                     android:id="@+id/textView40"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:text="Time"
+                    android:text="@{time}"
                     app:layout_constraintBottom_toBottomOf="@+id/textView39"
                     app:layout_constraintStart_toEndOf="@+id/textView39"
                     app:layout_constraintTop_toTopOf="@+id/textView39" />
@@ -1131,6 +1177,18 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
+        <ImageView
+            android:id="@+id/imageView8"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            loadImageFromUrl200="@{movie.posterPath}"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/textView17"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@tools:sample/avatars" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

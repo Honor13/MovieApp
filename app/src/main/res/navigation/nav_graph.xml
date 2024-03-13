@@ -80,5 +80,16 @@
         <argument
             android:name="detailsResult"
             app:argType="com.example.movieapp.data.models.moviedetails.DetailsResult" />
+        <argument
+            android:name="movieThaeterName"
+            app:argType="string"
+            app:nullable="true" />
+        <argument android:name="chipTime"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="date"
+            app:argType="string"
+            app:nullable="true" />
     </fragment>
 </navigation>

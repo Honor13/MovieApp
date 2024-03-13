@@ -1,7 +1,6 @@
 package com.example.movieapp.presentation.ui.fragments.bookingschedule
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -15,8 +14,6 @@ import androidx.navigation.fragment.navArgs
 import com.example.movieapp.R
 import com.example.movieapp.databinding.FragmentBookingScheduleBinding
 import com.example.movieapp.presentation.ui.viewmodels.BookingViewModel
-import com.google.android.material.chip.Chip
-import com.google.android.material.chip.ChipGroup
 import java.text.SimpleDateFormat
 import java.util.Locale
 
@@ -26,6 +23,9 @@ class BookingScheduleFragment : Fragment() {
 
     private lateinit var dateAdapter: ArrayAdapter<String>
     private lateinit var viewModel: BookingViewModel
+    private var date: String? = null
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -37,29 +37,24 @@ class BookingScheduleFragment : Fragment() {
             false
         )
 
-
         viewModel.loadItems()
 
         val bundle: BookingScheduleFragmentArgs by navArgs()
-        binding.detailsResult = bundle.detailsResult
-        binding.vote = String.format(Locale.US, "%,.1f", bundle.detailsResult.voteAverage)
-
-
-
+        val movieDetails = bundle.detailsResult
+        binding.detailsResult = movieDetails
+        binding.vote = String.format(Locale.US, "%,.1f", movieDetails.voteAverage)
 
         binding.apply {
-            dateTimeStarDustChipGroup. setOnCheckedStateChangeListener { group, checkedId ->
-                clearOtherChipGroupSelection(group, binding.dateTimeCosmosChipGroup)
+            dateTimeStarDustChipGroup.setOnCheckedStateChangeListener { group, checkedId ->
+                viewModel.clearOtherChipGroupSelection(group, binding.dateTimeCosmosChipGroup)
             }
 
-            dateTimeCosmosChipGroup. setOnCheckedStateChangeListener { group, checkedId ->
-                clearOtherChipGroupSelection(group, binding.dateTimeStarDustChipGroup)
+            dateTimeCosmosChipGroup.setOnCheckedStateChangeListener { group, checkedId ->
+                viewModel.clearOtherChipGroupSelection(group, binding.dateTimeStarDustChipGroup)
             }
         }
 
-
         //Read Spinner
-
         viewModel.selectedDay.observe(viewLifecycleOwner) {
             binding.dateTimeStarDustChipGroup.clearCheck()
             binding.dateTimeCosmosChipGroup.clearCheck()
@@ -67,11 +62,9 @@ class BookingScheduleFragment : Fragment() {
             viewModel.disableChipsBasedOnTime(binding.dateTimeCosmosChipGroup, it)
         }
 
-
         // spinner item observe
         viewModel.items.observe(viewLifecycleOwner) { items ->
             items?.let {
-                Log.e("Dante", "frg")
                 dateAdapter =
                     ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, it)
                 dateAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
@@ -82,12 +75,13 @@ class BookingScheduleFragment : Fragment() {
         binding.button2.setOnClickListener {
             val action =
                 BookingScheduleFragmentDirections.actionBookingScheduleFragmentToBookNowFragment(
-                    bundle.detailsResult
+                    movieDetails,
+                    viewModel.movieTheaterName,
+                    viewModel.chipTime,
+                    date
                 )
             Navigation.findNavController(it).navigate(action)
         }
-
-
 
         binding.spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
@@ -101,16 +95,15 @@ class BookingScheduleFragment : Fragment() {
                 val selectedDate =
                     SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).parse(selectedDateString)
 
-                // ViewModel içindeki LiveData'ye seçilen tarihi ata
-                viewModel.setSelectedDate(selectedDate!!)
+
+                date = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(selectedDate!!)
+                viewModel.setSelectedDate(selectedDate)
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
 
             }
         }
-
-
 
         return binding.root
     }
@@ -120,19 +113,6 @@ class BookingScheduleFragment : Fragment() {
         viewModel = ViewModelProvider(this).get(BookingViewModel::class.java)
     }
 
-
-    private fun clearOtherChipGroupSelection(
-        selectedChipGroup: ChipGroup,
-        otherChipGroup: ChipGroup
-    ) {
-        for (i in 0 until selectedChipGroup.childCount) {
-            val chip: Chip = selectedChipGroup.getChildAt(i) as Chip
-            if (chip.isChecked) {
-                otherChipGroup.clearCheck()
-                return
-            }
-        }
-    }
 
 
 }

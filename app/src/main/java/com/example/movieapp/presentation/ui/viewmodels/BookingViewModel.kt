@@ -1,6 +1,6 @@
 package com.example.movieapp.presentation.ui.viewmodels
 
-import android.util.Log
+
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -15,6 +15,9 @@ import javax.inject.Inject
 
 @HiltViewModel
 class BookingViewModel @Inject constructor() : ViewModel() {
+
+     var chipTime: String? = null
+     var movieTheaterName: String? = null
 
     private val _selectedDate = MutableLiveData<Date>()
     val selectedDay: LiveData<Date>
@@ -68,7 +71,6 @@ class BookingViewModel @Inject constructor() : ViewModel() {
 
             // Chip'in textinden saat bilgisini al
             val hour = chip.text.toString().substringBefore(":").toInt()
-            Log.e("Dante", "currentHour: $currentHour")
 
             val chipDate = Calendar.getInstance().apply {
                 time = readDate
@@ -82,6 +84,26 @@ class BookingViewModel @Inject constructor() : ViewModel() {
                 chip.isEnabled = true
 
 
+            }
+        }
+    }
+
+     fun clearOtherChipGroupSelection(
+        selectedChipGroup: ChipGroup,
+        otherChipGroup: ChipGroup
+    ) {
+         if (selectedChipGroup.transitionName == "dateTimeStarDustChipGroup"){
+             movieTheaterName="Stardust Cinema"
+         }else if(selectedChipGroup.transitionName == "dateTimeCosmosChipGroup"){
+             movieTheaterName="Cosmos Cinema"
+         }
+
+        for (i in 0 until selectedChipGroup.childCount) {
+            val chip: Chip = selectedChipGroup.getChildAt(i) as Chip
+            if (chip.isChecked) {
+                otherChipGroup.clearCheck()
+                chipTime = chip.text.toString()
+                return
             }
         }
     }
