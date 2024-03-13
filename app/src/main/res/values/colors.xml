@@ -22,7 +22,8 @@
     <color name="shimmer_child_color">#80C2C2C2</color>
     <color name="transparentImdbBGColor">#90000000</color>
     <color name="transparent">#00000000</color>
-    <color name="textLightGray">#80E8E5E5</color>
+    <color name="textLightGray">#80FFFEFE</color>
+    <color name="chipDisabledBackGroundColor">#656363</color>
 <!--    <color name="lightGray">#F9F9F9</color>-->
 
     // Custom Chip Style

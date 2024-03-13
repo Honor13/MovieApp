@@ -76,5 +76,9 @@
     <fragment
         android:id="@+id/bookNowFragment"
         android:name="com.example.movieapp.presentation.ui.fragments.booknow.BookNowFragment"
-        android:label="BookNowFragment" />
+        android:label="BookNowFragment" >
+        <argument
+            android:name="detailsResult"
+            app:argType="com.example.movieapp.data.models.moviedetails.DetailsResult" />
+    </fragment>
 </navigation>
