@@ -14,15 +14,19 @@ import androidx.navigation.fragment.navArgs
 import com.example.movieapp.R
 import com.example.movieapp.databinding.FragmentBookingScheduleBinding
 import com.example.movieapp.presentation.ui.viewmodels.BookingViewModel
+import com.example.movieapp.presentation.ui.viewmodels.FirebaseOperationsViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import java.text.SimpleDateFormat
 import java.util.Locale
 
+@AndroidEntryPoint
 class BookingScheduleFragment : Fragment() {
 
     private lateinit var binding: FragmentBookingScheduleBinding
 
     private lateinit var dateAdapter: ArrayAdapter<String>
     private lateinit var viewModel: BookingViewModel
+    private lateinit var fireBaseOperationsViewModel: FirebaseOperationsViewModel
     private var date: String? = null
 
 
@@ -54,6 +58,8 @@ class BookingScheduleFragment : Fragment() {
             }
         }
 
+
+
         //Read Spinner
         viewModel.selectedDay.observe(viewLifecycleOwner) {
             binding.dateTimeStarDustChipGroup.clearCheck()
@@ -73,6 +79,9 @@ class BookingScheduleFragment : Fragment() {
         }
 
         binding.button2.setOnClickListener {
+            //Booking Process
+            fireBaseOperationsViewModel.checkAndSaveBooking(movieDetails.id.toString(),"randomUser",date.toString(),viewModel.chipTime.toString())
+
             val action =
                 BookingScheduleFragmentDirections.actionBookingScheduleFragmentToBookNowFragment(
                     movieDetails,
@@ -111,6 +120,7 @@ class BookingScheduleFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewModel = ViewModelProvider(this).get(BookingViewModel::class.java)
+        fireBaseOperationsViewModel = ViewModelProvider(this).get(FirebaseOperationsViewModel::class.java)
     }
 
 

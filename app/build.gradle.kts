@@ -81,7 +81,8 @@ dependencies {
     implementation("androidx.navigation:navigation-ui-ktx:2.7.6")
     kapt("com.google.dagger:hilt-android-compiler:2.48")
 
-
+    // Firebase
+    implementation("com.google.firebase:firebase-firestore:24.10.3")
     // Shimmer
     implementation("com.facebook.shimmer:shimmer:0.5.0")
 

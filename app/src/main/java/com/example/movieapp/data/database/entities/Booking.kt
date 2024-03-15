@@ -2,7 +2,10 @@ package com.example.movieapp.data.database.entities
 
 data class Booking(
     var id: String? = "",
+    var userId: String? = "",
     var movieId: String? = "",
+    var bookingDate: String? = "",
+    var bookingTime: String? = "",
     var a1: Boolean? = false,
     var a2: Boolean? = false,
     var a3: Boolean? = false,
@@ -75,5 +78,5 @@ data class Booking(
     var f11: Boolean? = false,
     var f12: Boolean? = false,
 
-) {
+    ) {
 }
