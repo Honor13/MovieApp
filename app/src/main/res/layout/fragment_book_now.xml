@@ -25,6 +25,10 @@
             name="movieTheaterName"
             type="String" />
 
+        <variable
+            name="booking"
+            type="com.example.movieapp.data.database.entities.Booking" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -345,6 +349,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="10dp"
+                applySeats="@{booking.a1}"
                 android:src="@drawable/seat_available"
                 app:layout_constraintStart_toEndOf="@+id/textView21"
                 app:layout_constraintTop_toBottomOf="@+id/textView1" />
@@ -354,6 +359,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
+                applySeats="@{booking.a2}"
                 android:src="@drawable/seat_available"
                 app:layout_constraintStart_toEndOf="@+id/A1"
                 app:layout_constraintTop_toTopOf="@+id/A1" />

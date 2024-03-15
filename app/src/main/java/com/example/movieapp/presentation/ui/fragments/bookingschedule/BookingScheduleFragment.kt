@@ -23,12 +23,10 @@ import java.util.Locale
 class BookingScheduleFragment : Fragment() {
 
     private lateinit var binding: FragmentBookingScheduleBinding
-
     private lateinit var dateAdapter: ArrayAdapter<String>
     private lateinit var viewModel: BookingViewModel
     private lateinit var fireBaseOperationsViewModel: FirebaseOperationsViewModel
     private var date: String? = null
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -48,6 +46,7 @@ class BookingScheduleFragment : Fragment() {
         binding.detailsResult = movieDetails
         binding.vote = String.format(Locale.US, "%,.1f", movieDetails.voteAverage)
 
+
         binding.apply {
             dateTimeStarDustChipGroup.setOnCheckedStateChangeListener { group, checkedId ->
                 viewModel.clearOtherChipGroupSelection(group, binding.dateTimeCosmosChipGroup)
@@ -57,6 +56,7 @@ class BookingScheduleFragment : Fragment() {
                 viewModel.clearOtherChipGroupSelection(group, binding.dateTimeStarDustChipGroup)
             }
         }
+
 
 
 
@@ -122,7 +122,4 @@ class BookingScheduleFragment : Fragment() {
         viewModel = ViewModelProvider(this).get(BookingViewModel::class.java)
         fireBaseOperationsViewModel = ViewModelProvider(this).get(FirebaseOperationsViewModel::class.java)
     }
-
-
-
 }
