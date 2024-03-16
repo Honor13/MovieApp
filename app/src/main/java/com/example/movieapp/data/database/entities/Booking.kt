@@ -65,6 +65,7 @@ data class Booking(
     var e9: Boolean? = false,
     var e10: Boolean? = false,
     var e11: Boolean? = false,
+    var e12: Boolean? = false,
     var f1: Boolean? = false,
     var f2: Boolean? = false,
     var f3: Boolean? = false,
