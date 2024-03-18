@@ -351,6 +351,7 @@
                 android:layout_marginTop="10dp"
                 applySeats="@{booking.a1}"
                 selectSeat="@{booking.a1}"
+                seatId='@{"a1"}'
                 android:src="@drawable/seat_available"
                 app:layout_constraintStart_toEndOf="@+id/textView21"
                 app:layout_constraintTop_toBottomOf="@+id/textView1" />
@@ -362,6 +363,7 @@
                 android:layout_marginStart="8dp"
                 applySeats="@{booking.a2}"
                 selectSeat="@{booking.a2}"
+                seatId='@{"a2"}'
                 android:src="@drawable/seat_available"
                 app:layout_constraintStart_toEndOf="@+id/A1"
                 app:layout_constraintTop_toTopOf="@+id/A1" />
@@ -372,6 +374,7 @@
                 android:layout_height="wrap_content"
                 applySeats="@{booking.a3}"
                 selectSeat="@{booking.a3}"
+                seatId='@{"a3"}'
                 android:layout_marginStart="32dp"
                 android:src="@drawable/seat_available"
                 app:layout_constraintStart_toEndOf="@+id/A2"
@@ -384,6 +387,7 @@
                 android:layout_marginStart="8dp"
                 applySeats="@{booking.a4}"
                 selectSeat="@{booking.a4}"
+                seatId='@{"a4"}'
                 android:src="@drawable/seat_available"
                 app:layout_constraintStart_toEndOf="@+id/A3"
                 app:layout_constraintTop_toTopOf="@+id/A3" />
@@ -395,6 +399,7 @@
                 android:layout_marginStart="8dp"
                 applySeats="@{booking.a5}"
                 selectSeat="@{booking.a5}"
+                seatId='@{"a5"}'
                 android:src="@drawable/seat_available"
                 app:layout_constraintStart_toEndOf="@+id/A4"
                 app:layout_constraintTop_toTopOf="@+id/A4" />
@@ -406,6 +411,7 @@
                 android:layout_marginStart="8dp"
                 applySeats="@{booking.a6}"
                 selectSeat="@{booking.a6}"
+                seatId='@{"a6"}'
                 android:src="@drawable/seat_available"
                 app:layout_constraintStart_toEndOf="@+id/A5"
                 app:layout_constraintTop_toTopOf="@+id/A5" />
@@ -417,6 +423,7 @@
                 android:layout_marginStart="8dp"
                 applySeats="@{booking.a7}"
                 selectSeat="@{booking.a7}"
+                seatId='@{"a7"}'
                 android:src="@drawable/seat_available"
                 app:layout_constraintStart_toEndOf="@+id/A6"
                 app:layout_constraintTop_toTopOf="@+id/A6" />
@@ -428,6 +435,7 @@
                 android:layout_marginStart="8dp"
                 applySeats="@{booking.a8}"
                 selectSeat="@{booking.a8}"
+                seatId='@{"a8"}'
                 android:src="@drawable/seat_available"
                 app:layout_constraintStart_toEndOf="@+id/A7"
                 app:layout_constraintTop_toTopOf="@+id/A7" />
@@ -439,6 +447,7 @@
                 android:layout_marginStart="8dp"
                 applySeats="@{booking.a9}"
                 selectSeat="@{booking.a9}"
+                seatId='@{"a9"}'
                 android:src="@drawable/seat_available"
                 app:layout_constraintStart_toEndOf="@+id/A8"
                 app:layout_constraintTop_toTopOf="@+id/A8" />
@@ -450,6 +459,7 @@
                 android:layout_marginStart="8dp"
                 applySeats="@{booking.a10}"
                 selectSeat="@{booking.a10}"
+                seatId='@{"a10"}'
                 android:src="@drawable/seat_available"
                 app:layout_constraintStart_toEndOf="@+id/A9"
                 app:layout_constraintTop_toTopOf="@+id/A9" />
@@ -461,6 +471,7 @@
                 android:layout_marginStart="32dp"
                 applySeats="@{booking.a11}"
                 selectSeat="@{booking.a11}"
+                seatId='@{"a11"}'
                 android:src="@drawable/seat_available"
                 app:layout_constraintStart_toEndOf="@+id/A10"
                 app:layout_constraintTop_toTopOf="@+id/A10" />
@@ -472,6 +483,7 @@
                 android:layout_marginStart="8dp"
                 applySeats="@{booking.a12}"
                 selectSeat="@{booking.a12}"
+                seatId='@{"a12"}'
                 android:src="@drawable/seat_available"
                 app:layout_constraintStart_toEndOf="@+id/A11"
                 app:layout_constraintTop_toTopOf="@+id/A11" />
@@ -485,6 +497,7 @@
                 android:layout_marginStart="16dp"
                 applySeats="@{booking.b1}"
                 selectSeat="@{booking.b1}"
+                seatId='@{"b1"}'
                 android:src="@drawable/seat_available"
                 app:layout_constraintBottom_toBottomOf="@+id/textView22"
                 app:layout_constraintStart_toEndOf="@+id/textView22"
@@ -497,6 +510,7 @@
                 android:layout_marginStart="8dp"
                 applySeats="@{booking.b2}"
                 selectSeat="@{booking.b2}"
+                seatId='@{"b2"}'
                 android:src="@drawable/seat_available"
                 app:layout_constraintStart_toEndOf="@+id/B1"
                 app:layout_constraintTop_toTopOf="@+id/B1" />
@@ -508,6 +522,7 @@
                 android:layout_marginStart="32dp"
                 applySeats="@{booking.b3}"
                 selectSeat="@{booking.b3}"
+                seatId='@{"b3"}'
                 android:src="@drawable/seat_available"
                 app:layout_constraintStart_toEndOf="@+id/B2"
                 app:layout_constraintTop_toTopOf="@+id/B2" />
@@ -519,6 +534,7 @@
                 android:layout_marginStart="8dp"
                 applySeats="@{booking.b4}"
                 selectSeat="@{booking.b4}"
+                seatId='@{"b4"}'
                 android:src="@drawable/seat_available"
                 app:layout_constraintStart_toEndOf="@+id/B3"
                 app:layout_constraintTop_toTopOf="@+id/B3" />
@@ -530,6 +546,7 @@
                 android:layout_marginStart="8dp"
                 applySeats="@{booking.b5}"
                 selectSeat="@{booking.b5}"
+                seatId='@{"b5"}'
                 android:src="@drawable/seat_available"
                 app:layout_constraintStart_toEndOf="@+id/B4"
                 app:layout_constraintTop_toTopOf="@+id/B4" />
@@ -541,6 +558,7 @@
                 android:layout_marginStart="8dp"
                 applySeats="@{booking.b6}"
                 selectSeat="@{booking.b6}"
+                seatId='@{"b6"}'
                 android:src="@drawable/seat_available"
                 app:layout_constraintStart_toEndOf="@+id/B5"
                 app:layout_constraintTop_toTopOf="@+id/B5" />
@@ -551,6 +569,7 @@
                 android:layout_height="wrap_content"
                 applySeats="@{booking.b7}"
                 selectSeat="@{booking.b7}"
+                seatId='@{"b7"}'
                 android:layout_marginStart="8dp"
                 android:src="@drawable/seat_available"
                 app:layout_constraintStart_toEndOf="@+id/B6"
@@ -563,6 +582,7 @@
                 android:layout_marginStart="8dp"
                 applySeats="@{booking.b8}"
                 selectSeat="@{booking.b8}"
+                seatId='@{"b8"}'
                 android:src="@drawable/seat_available"
                 app:layout_constraintStart_toEndOf="@+id/B7"
                 app:layout_constraintTop_toTopOf="@+id/B7" />
@@ -574,6 +594,7 @@
                 android:layout_marginStart="8dp"
                 applySeats="@{booking.b9}"
                 selectSeat="@{booking.b9}"
+                seatId='@{"b9"}'
                 android:src="@drawable/seat_available"
                 app:layout_constraintStart_toEndOf="@+id/B8"
                 app:layout_constraintTop_toTopOf="@+id/B8" />
@@ -585,6 +606,7 @@
                 android:layout_marginStart="8dp"
                 applySeats="@{booking.b10}"
                 selectSeat="@{booking.b10}"
+                seatId='@{"b10"}'
                 android:src="@drawable/seat_available"
                 app:layout_constraintStart_toEndOf="@+id/B9"
                 app:layout_constraintTop_toTopOf="@+id/B9" />
@@ -596,6 +618,7 @@
                 android:layout_marginStart="32dp"
                 applySeats="@{booking.b11}"
                 selectSeat="@{booking.b11}"
+                seatId='@{"b11"}'
                 android:src="@drawable/seat_available"
                 app:layout_constraintStart_toEndOf="@+id/B10"
                 app:layout_constraintTop_toTopOf="@+id/B10" />
@@ -607,6 +630,7 @@
                 android:layout_marginStart="8dp"
                 applySeats="@{booking.b12}"
                 selectSeat="@{booking.b12}"
+                seatId='@{"b12"}'
                 android:src="@drawable/seat_available"
                 app:layout_constraintStart_toEndOf="@+id/B11"
                 app:layout_constraintTop_toTopOf="@+id/B11" />
@@ -620,6 +644,7 @@
                 android:layout_marginStart="16dp"
                 applySeats="@{booking.c1}"
                 selectSeat="@{booking.c1}"
+                seatId='@{"c1"}'
                 android:src="@drawable/seat_available"
                 app:layout_constraintBottom_toBottomOf="@+id/textView23"
                 app:layout_constraintStart_toEndOf="@+id/textView23"
@@ -632,6 +657,7 @@
                 android:layout_marginStart="8dp"
                 applySeats="@{booking.c2}"
                 selectSeat="@{booking.c2}"
+                seatId='@{"c2"}'
                 android:src="@drawable/seat_available"
                 app:layout_constraintStart_toEndOf="@+id/C1"
                 app:layout_constraintTop_toTopOf="@+id/C1" />
@@ -643,6 +669,7 @@
                 android:layout_marginStart="32dp"
                 applySeats="@{booking.c3}"
                 selectSeat="@{booking.c3}"
+                seatId='@{"c3"}'
                 android:src="@drawable/seat_available"
                 app:layout_constraintStart_toEndOf="@+id/C2"
                 app:layout_constraintTop_toTopOf="@+id/C2" />
@@ -654,6 +681,7 @@
                 android:layout_marginStart="8dp"
                 applySeats="@{booking.c4}"
                 selectSeat="@{booking.c4}"
+                seatId='@{"c4"}'
                 android:src="@drawable/seat_available"
                 app:layout_constraintStart_toEndOf="@+id/C3"
                 app:layout_constraintTop_toTopOf="@+id/C3" />
@@ -665,6 +693,7 @@
                 android:layout_marginStart="8dp"
                 applySeats="@{booking.c5}"
                 selectSeat="@{booking.c5}"
+                seatId='@{"c5"}'
                 android:src="@drawable/seat_available"
                 app:layout_constraintStart_toEndOf="@+id/C4"
                 app:layout_constraintTop_toTopOf="@+id/C4" />
@@ -676,6 +705,7 @@
                 android:layout_marginStart="8dp"
                 applySeats="@{booking.c6}"
                 selectSeat="@{booking.c6}"
+                seatId='@{"c6"}'
                 android:src="@drawable/seat_available"
                 app:layout_constraintStart_toEndOf="@+id/C5"
                 app:layout_constraintTop_toTopOf="@+id/C5" />
@@ -687,6 +717,7 @@
                 android:layout_marginStart="8dp"
                 applySeats="@{booking.c7}"
                 selectSeat="@{booking.c7}"
+                seatId='@{"c7"}'
                 android:src="@drawable/seat_available"
                 app:layout_constraintStart_toEndOf="@+id/C6"
                 app:layout_constraintTop_toTopOf="@+id/C6" />
@@ -698,6 +729,7 @@
                 android:layout_marginStart="8dp"
                 applySeats="@{booking.c8}"
                 selectSeat="@{booking.c8}"
+                seatId='@{"c8"}'
                 android:src="@drawable/seat_available"
                 app:layout_constraintStart_toEndOf="@+id/C7"
                 app:layout_constraintTop_toTopOf="@+id/C7" />
@@ -709,6 +741,7 @@
                 android:layout_marginStart="8dp"
                 applySeats="@{booking.c9}"
                 selectSeat="@{booking.c9}"
+                seatId='@{"c9"}'
                 android:src="@drawable/seat_available"
                 app:layout_constraintStart_toEndOf="@+id/C8"
                 app:layout_constraintTop_toTopOf="@+id/C8" />
@@ -720,6 +753,7 @@
                 android:layout_marginStart="8dp"
                 applySeats="@{booking.c10}"
                 selectSeat="@{booking.c10}"
+                seatId='@{"c10"}'
                 android:src="@drawable/seat_available"
                 app:layout_constraintStart_toEndOf="@+id/C9"
                 app:layout_constraintTop_toTopOf="@+id/C9" />
@@ -731,6 +765,7 @@
                 android:layout_marginStart="32dp"
                 applySeats="@{booking.c11}"
                 selectSeat="@{booking.c11}"
+                seatId='@{"c11"}'
                 android:src="@drawable/seat_available"
                 app:layout_constraintStart_toEndOf="@+id/C10"
                 app:layout_constraintTop_toTopOf="@+id/C10" />
@@ -742,6 +777,7 @@
                 android:layout_marginStart="8dp"
                 applySeats="@{booking.c12}"
                 selectSeat="@{booking.c12}"
+                seatId='@{"c12"}'
                 android:src="@drawable/seat_available"
                 app:layout_constraintStart_toEndOf="@+id/C11"
                 app:layout_constraintTop_toTopOf="@+id/C11" />
@@ -755,6 +791,7 @@
                 android:layout_marginStart="16dp"
                 applySeats="@{booking.d1}"
                 selectSeat="@{booking.d1}"
+                seatId='@{"d1"}'
                 android:src="@drawable/seat_available"
                 app:layout_constraintBottom_toBottomOf="@+id/textView24"
                 app:layout_constraintStart_toEndOf="@+id/textView24"
@@ -767,6 +804,7 @@
                 android:layout_marginStart="8dp"
                 applySeats="@{booking.d2}"
                 selectSeat="@{booking.d2}"
+                seatId='@{"d2"}'
                 android:src="@drawable/seat_available"
                 app:layout_constraintStart_toEndOf="@+id/D1"
                 app:layout_constraintTop_toTopOf="@+id/D1" />
@@ -778,6 +816,7 @@
                 android:layout_marginStart="32dp"
                 applySeats="@{booking.d3}"
                 selectSeat="@{booking.d3}"
+                seatId='@{"d3"}'
                 android:src="@drawable/seat_available"
                 app:layout_constraintStart_toEndOf="@+id/D2"
                 app:layout_constraintTop_toTopOf="@+id/D2" />
@@ -789,6 +828,7 @@
                 android:layout_marginStart="8dp"
                 applySeats="@{booking.d4}"
                 selectSeat="@{booking.d4}"
+                seatId='@{"d4"}'
                 android:src="@drawable/seat_available"
                 app:layout_constraintStart_toEndOf="@+id/D3"
                 app:layout_constraintTop_toTopOf="@+id/D3" />
@@ -800,6 +840,7 @@
                 android:layout_marginStart="8dp"
                 applySeats="@{booking.d5}"
                 selectSeat="@{booking.d5}"
+                seatId='@{"d5"}'
                 android:src="@drawable/seat_available"
                 app:layout_constraintStart_toEndOf="@+id/D4"
                 app:layout_constraintTop_toTopOf="@+id/D4" />
@@ -811,6 +852,7 @@
                 android:layout_marginStart="8dp"
                 applySeats="@{booking.d6}"
                 selectSeat="@{booking.d6}"
+                seatId='@{"d6"}'
                 android:src="@drawable/seat_available"
                 app:layout_constraintStart_toEndOf="@+id/D5"
                 app:layout_constraintTop_toTopOf="@+id/D5" />
@@ -822,6 +864,7 @@
                 android:layout_marginStart="8dp"
                 applySeats="@{booking.d7}"
                 selectSeat="@{booking.d7}"
+                seatId='@{"d7"}'
                 android:src="@drawable/seat_available"
                 app:layout_constraintStart_toEndOf="@+id/D6"
                 app:layout_constraintTop_toTopOf="@+id/D6" />
@@ -833,6 +876,7 @@
                 android:layout_marginStart="8dp"
                 applySeats="@{booking.d8}"
                 selectSeat="@{booking.d8}"
+                seatId='@{"d8"}'
                 android:src="@drawable/seat_available"
                 app:layout_constraintStart_toEndOf="@+id/D7"
                 app:layout_constraintTop_toTopOf="@+id/D7" />
@@ -844,6 +888,7 @@
                 android:layout_marginStart="8dp"
                 applySeats="@{booking.d9}"
                 selectSeat="@{booking.d9}"
+                seatId='@{"d9"}'
                 android:src="@drawable/seat_available"
                 app:layout_constraintStart_toEndOf="@+id/D8"
                 app:layout_constraintTop_toTopOf="@+id/D8" />
@@ -855,6 +900,7 @@
                 android:layout_marginStart="8dp"
                 applySeats="@{booking.d10}"
                 selectSeat="@{booking.d10}"
+                seatId='@{"d10"}'
                 android:src="@drawable/seat_available"
                 app:layout_constraintStart_toEndOf="@+id/D9"
                 app:layout_constraintTop_toTopOf="@+id/D9" />
@@ -866,6 +912,7 @@
                 android:layout_marginStart="32dp"
                 applySeats="@{booking.d11}"
                 selectSeat="@{booking.d11}"
+                seatId='@{"d11"}'
                 android:src="@drawable/seat_available"
                 app:layout_constraintStart_toEndOf="@+id/D10"
                 app:layout_constraintTop_toTopOf="@+id/D10" />
@@ -877,6 +924,7 @@
                 android:layout_marginStart="8dp"
                 applySeats="@{booking.d12}"
                 selectSeat="@{booking.d12}"
+                seatId='@{"d12"}'
                 android:src="@drawable/seat_available"
                 app:layout_constraintStart_toEndOf="@+id/D11"
                 app:layout_constraintTop_toTopOf="@+id/D11" />
@@ -890,6 +938,7 @@
                 android:layout_marginStart="16dp"
                 applySeats="@{booking.e1}"
                 selectSeat="@{booking.e1}"
+                seatId='@{"e1"}'
                 android:src="@drawable/seat_available"
                 app:layout_constraintBottom_toBottomOf="@+id/textView25"
                 app:layout_constraintStart_toEndOf="@+id/textView25"
@@ -902,6 +951,7 @@
                 android:layout_marginStart="8dp"
                 applySeats="@{booking.e2}"
                 selectSeat="@{booking.e2}"
+                seatId='@{"e2"}'
                 android:src="@drawable/seat_available"
                 app:layout_constraintStart_toEndOf="@+id/E1"
                 app:layout_constraintTop_toTopOf="@+id/E1" />
@@ -913,6 +963,7 @@
                 android:layout_marginStart="32dp"
                 applySeats="@{booking.e3}"
                 selectSeat="@{booking.e3}"
+                seatId='@{"e3"}'
                 android:src="@drawable/seat_available"
                 app:layout_constraintStart_toEndOf="@+id/E2"
                 app:layout_constraintTop_toTopOf="@+id/E2" />
@@ -924,6 +975,7 @@
                 android:layout_marginStart="8dp"
                 applySeats="@{booking.e4}"
                 selectSeat="@{booking.e4}"
+                seatId='@{"e4"}'
                 android:src="@drawable/seat_available"
                 app:layout_constraintStart_toEndOf="@+id/E3"
                 app:layout_constraintTop_toTopOf="@+id/E3" />
@@ -935,6 +987,7 @@
                 android:layout_marginStart="8dp"
                 applySeats="@{booking.e5}"
                 selectSeat="@{booking.e5}"
+                seatId='@{"e5"}'
                 android:src="@drawable/seat_available"
                 app:layout_constraintStart_toEndOf="@+id/E4"
                 app:layout_constraintTop_toTopOf="@+id/E4" />
@@ -946,6 +999,7 @@
                 android:layout_marginStart="8dp"
                 applySeats="@{booking.e6}"
                 selectSeat="@{booking.e6}"
+                seatId='@{"e6"}'
                 android:src="@drawable/seat_available"
                 app:layout_constraintStart_toEndOf="@+id/E5"
                 app:layout_constraintTop_toTopOf="@+id/E5" />
@@ -957,6 +1011,7 @@
                 android:layout_marginStart="8dp"
                 applySeats="@{booking.e7}"
                 selectSeat="@{booking.e7}"
+                seatId='@{"e7"}'
                 android:src="@drawable/seat_available"
                 app:layout_constraintStart_toEndOf="@+id/E6"
                 app:layout_constraintTop_toTopOf="@+id/E6" />
@@ -968,6 +1023,7 @@
                 android:layout_marginStart="8dp"
                 applySeats="@{booking.e8}"
                 selectSeat="@{booking.e8}"
+                seatId='@{"e8"}'
                 android:src="@drawable/seat_available"
                 app:layout_constraintStart_toEndOf="@+id/E7"
                 app:layout_constraintTop_toTopOf="@+id/E7" />
@@ -979,6 +1035,7 @@
                 android:layout_marginStart="8dp"
                 applySeats="@{booking.e9}"
                 selectSeat="@{booking.e9}"
+                seatId='@{"e9"}'
                 android:src="@drawable/seat_available"
                 app:layout_constraintStart_toEndOf="@+id/E8"
                 app:layout_constraintTop_toTopOf="@+id/E8" />
@@ -990,6 +1047,7 @@
                 android:layout_marginStart="8dp"
                 applySeats="@{booking.e10}"
                 selectSeat="@{booking.e10}"
+                seatId='@{"e10"}'
                 android:src="@drawable/seat_available"
                 app:layout_constraintStart_toEndOf="@+id/E9"
                 app:layout_constraintTop_toTopOf="@+id/E9" />
@@ -1001,6 +1059,7 @@
                 android:layout_marginStart="32dp"
                 applySeats="@{booking.e11}"
                 selectSeat="@{booking.e11}"
+                seatId='@{"e11"}'
                 android:src="@drawable/seat_available"
                 app:layout_constraintStart_toEndOf="@+id/E10"
                 app:layout_constraintTop_toTopOf="@+id/E10" />
@@ -1012,6 +1071,7 @@
                 android:layout_marginStart="8dp"
                 applySeats="@{booking.e12}"
                 selectSeat="@{booking.e12}"
+                seatId='@{"e12"}'
                 android:src="@drawable/seat_available"
                 app:layout_constraintStart_toEndOf="@+id/E11"
                 app:layout_constraintTop_toTopOf="@+id/E11" />
@@ -1025,6 +1085,7 @@
                 android:layout_marginStart="16dp"
                 applySeats="@{booking.f1}"
                 selectSeat="@{booking.f1}"
+                seatId='@{"f1"}'
                 android:src="@drawable/seat_available"
                 app:layout_constraintBottom_toBottomOf="@+id/textView26"
                 app:layout_constraintStart_toEndOf="@+id/textView26"
@@ -1037,6 +1098,7 @@
                 android:layout_marginStart="8dp"
                 applySeats="@{booking.f2}"
                 selectSeat="@{booking.f2}"
+                seatId='@{"f2"}'
                 android:src="@drawable/seat_available"
                 app:layout_constraintStart_toEndOf="@+id/F1"
                 app:layout_constraintTop_toTopOf="@+id/F1" />
@@ -1048,6 +1110,7 @@
                 android:layout_marginStart="32dp"
                 applySeats="@{booking.f3}"
                 selectSeat="@{booking.f3}"
+                seatId='@{"f3"}'
                 android:src="@drawable/seat_available"
                 app:layout_constraintStart_toEndOf="@+id/F2"
                 app:layout_constraintTop_toTopOf="@+id/F2" />
@@ -1059,6 +1122,7 @@
                 android:layout_marginStart="8dp"
                 applySeats="@{booking.f4}"
                 selectSeat="@{booking.f4}"
+                seatId='@{"f4"}'
                 android:src="@drawable/seat_available"
                 app:layout_constraintStart_toEndOf="@+id/F3"
                 app:layout_constraintTop_toTopOf="@+id/F3" />
@@ -1070,6 +1134,7 @@
                 android:layout_marginStart="8dp"
                 applySeats="@{booking.f5}"
                 selectSeat="@{booking.f5}"
+                seatId='@{"f5"}'
                 android:src="@drawable/seat_available"
                 app:layout_constraintStart_toEndOf="@+id/F4"
                 app:layout_constraintTop_toTopOf="@+id/F4" />
@@ -1081,6 +1146,7 @@
                 android:layout_marginStart="8dp"
                 applySeats="@{booking.f6}"
                 selectSeat="@{booking.f6}"
+                seatId='@{"f6"}'
                 android:src="@drawable/seat_available"
                 app:layout_constraintStart_toEndOf="@+id/F5"
                 app:layout_constraintTop_toTopOf="@+id/F5" />
@@ -1092,6 +1158,7 @@
                 android:layout_marginStart="8dp"
                 applySeats="@{booking.f7}"
                 selectSeat="@{booking.f7}"
+                seatId='@{"f7"}'
                 android:src="@drawable/seat_available"
                 app:layout_constraintStart_toEndOf="@+id/F6"
                 app:layout_constraintTop_toTopOf="@+id/F6" />
@@ -1103,6 +1170,7 @@
                 android:layout_marginStart="8dp"
                 applySeats="@{booking.f8}"
                 selectSeat="@{booking.f8}"
+                seatId='@{"f8"}'
                 android:src="@drawable/seat_available"
                 app:layout_constraintStart_toEndOf="@+id/F7"
                 app:layout_constraintTop_toTopOf="@+id/F7" />
@@ -1114,6 +1182,7 @@
                 android:layout_marginStart="8dp"
                 applySeats="@{booking.f9}"
                 selectSeat="@{booking.f9}"
+                seatId='@{"f9"}'
                 android:src="@drawable/seat_available"
                 app:layout_constraintStart_toEndOf="@+id/F8"
                 app:layout_constraintTop_toTopOf="@+id/F8" />
@@ -1125,6 +1194,7 @@
                 android:layout_marginStart="8dp"
                 applySeats="@{booking.f10}"
                 selectSeat="@{booking.f10}"
+                seatId='@{"f10"}'
                 android:src="@drawable/seat_available"
                 app:layout_constraintStart_toEndOf="@+id/F9"
                 app:layout_constraintTop_toTopOf="@+id/F9" />
@@ -1136,6 +1206,7 @@
                 android:layout_marginStart="32dp"
                 applySeats="@{booking.f11}"
                 selectSeat="@{booking.f11}"
+                seatId='@{"f11"}'
                 android:src="@drawable/seat_available"
                 app:layout_constraintStart_toEndOf="@+id/F10"
                 app:layout_constraintTop_toTopOf="@+id/F10" />
@@ -1147,6 +1218,7 @@
                 android:layout_marginStart="8dp"
                 applySeats="@{booking.f12}"
                 selectSeat="@{booking.f12}"
+                seatId='@{"f12"}'
                 android:src="@drawable/seat_available"
                 app:layout_constraintStart_toEndOf="@+id/F11"
                 app:layout_constraintTop_toTopOf="@+id/F11" />

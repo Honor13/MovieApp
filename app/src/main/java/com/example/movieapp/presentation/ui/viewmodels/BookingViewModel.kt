@@ -4,6 +4,7 @@ package com.example.movieapp.presentation.ui.viewmodels
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.movieapp.presentation.ui.bindingadapters.BookingBinding
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -16,8 +17,13 @@ import javax.inject.Inject
 @HiltViewModel
 class BookingViewModel @Inject constructor() : ViewModel() {
 
-     var chipTime: String? = null
-     var movieTheaterName: String? = null
+    var chipTime: String? = null
+    var movieTheaterName: String? = null
+    var selectedSeatIds = MutableLiveData<List<String>>()
+
+    fun getIds(){
+        selectedSeatIds.value = BookingBinding.getSelectedSeatIds()
+    }
 
     private val _selectedDate = MutableLiveData<Date>()
     val selectedDay: LiveData<Date>
@@ -76,7 +82,7 @@ class BookingViewModel @Inject constructor() : ViewModel() {
                 time = readDate
             }.get(Calendar.DAY_OF_MONTH)
 
-            if (currentDay == chipDate && hour <= currentHour) {
+            if (currentDay == chipDate && hour <= currentHour) { // currentHour
                 chip.isEnabled = false
 
 
@@ -88,15 +94,15 @@ class BookingViewModel @Inject constructor() : ViewModel() {
         }
     }
 
-     fun clearOtherChipGroupSelection(
+    fun clearOtherChipGroupSelection(
         selectedChipGroup: ChipGroup,
         otherChipGroup: ChipGroup
     ) {
-         if (selectedChipGroup.transitionName == "dateTimeStarDustChipGroup"){
-             movieTheaterName="Stardust Cinema"
-         }else if(selectedChipGroup.transitionName == "dateTimeCosmosChipGroup"){
-             movieTheaterName="Cosmos Cinema"
-         }
+        if (selectedChipGroup.transitionName == "dateTimeStarDustChipGroup") {
+            movieTheaterName = "Stardust Cinema"
+        } else if (selectedChipGroup.transitionName == "dateTimeCosmosChipGroup") {
+            movieTheaterName = "Cosmos Cinema"
+        }
 
         for (i in 0 until selectedChipGroup.childCount) {
             val chip: Chip = selectedChipGroup.getChildAt(i) as Chip
@@ -107,4 +113,6 @@ class BookingViewModel @Inject constructor() : ViewModel() {
             }
         }
     }
+
+
 }

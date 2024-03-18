@@ -7,7 +7,7 @@ import com.example.movieapp.R
 class BookingBinding {
 
     companion object {
-
+        private val selectedSeatIds = mutableListOf<String>()
         @BindingAdapter("applySeats")
         @JvmStatic
         fun applySeats(view: ImageView, state: Boolean) {
@@ -21,11 +21,12 @@ class BookingBinding {
 
                 )
             }
+
         }
 
-        @BindingAdapter("selectSeat")
+        @BindingAdapter("selectSeat","seatId", requireAll = false)
         @JvmStatic
-        fun selectSeat(view: ImageView, state: Boolean) {
+        fun selectSeat(view: ImageView, state: Boolean, seatId: String) {
             var isSelected = state
             view.setOnClickListener {
                 isSelected = !isSelected
@@ -33,12 +34,18 @@ class BookingBinding {
                 // isSelected true ise yeni resmi, değilse eski resmi ayarla
                 if (isSelected) {
                     view.setImageResource(R.drawable.seat_selected)
+                    selectedSeatIds.add(seatId)
                 } else {
                     view.setImageResource(R.drawable.seat_available)
+                    selectedSeatIds.remove(seatId)
                 }
+
             }
         }
 
+        fun getSelectedSeatIds(): List<String> {
+            return selectedSeatIds
+        }
 
     }
 }

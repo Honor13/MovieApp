@@ -1,6 +1,7 @@
 package com.example.movieapp.presentation.ui.fragments.booknow
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
 import com.example.movieapp.R
 import com.example.movieapp.databinding.FragmentBookNowBinding
+import com.example.movieapp.presentation.ui.viewmodels.BookingViewModel
 import com.example.movieapp.presentation.ui.viewmodels.FirebaseOperationsViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.Locale
@@ -20,6 +22,7 @@ class BookNowFragment : Fragment() {
 
     private lateinit var binding: FragmentBookNowBinding
     private lateinit var firebaseViewModel: FirebaseOperationsViewModel
+    private lateinit var bookingViewModel: BookingViewModel
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -45,6 +48,11 @@ class BookNowFragment : Fragment() {
             binding.booking = it
         }
 
+        bookingViewModel.getIds()
+        bookingViewModel.selectedSeatIds.observe(viewLifecycleOwner){
+            Log.e("Dante",it.toString())
+        }
+
 
         return binding.root
     }
@@ -53,6 +61,7 @@ class BookNowFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         firebaseViewModel = ViewModelProvider(this).get(FirebaseOperationsViewModel::class.java)
+        bookingViewModel = ViewModelProvider(this).get(BookingViewModel::class.java)
     }
 
 }
