@@ -19,4 +19,9 @@
     <string name="biography">Biography</string>
     <string name="movies">Movies</string>
     <string name="seats_selection">Seats Selection</string>
+    <string name="mm_yy">MM/YY</string>
+    <string name="bank_name">BANK NAME</string>
+    <string name="card_holder">CARD HOLDER</string>
+    <string name="cardholder_name">CARDHOLDER NAME</string>
+    <string name="expire_date">EXPIRE DATE</string>
 </resources>
