@@ -1,6 +1,7 @@
 package com.example.movieapp.presentation.ui.viewmodels
 
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -21,9 +22,10 @@ class BookingViewModel @Inject constructor() : ViewModel() {
     var movieTheaterName: String? = null
     var selectedSeatIds = MutableLiveData<List<String>>()
 
-    fun getIds(){
+    fun getIds() {
         selectedSeatIds.value = BookingBinding.getSelectedSeatIds()
     }
+
 
     private val _selectedDate = MutableLiveData<Date>()
     val selectedDay: LiveData<Date>
@@ -41,6 +43,8 @@ class BookingViewModel @Inject constructor() : ViewModel() {
     private val _items = MutableLiveData<List<String>>()
     val items: LiveData<List<String>>
         get() = _items
+
+
 
     init {
         loadItems()
@@ -67,6 +71,7 @@ class BookingViewModel @Inject constructor() : ViewModel() {
         }
     }
 
+
     fun disableChipsBasedOnTime(chipGroup: ChipGroup, readDate: Date) {
         val calendar = Calendar.getInstance()
         val currentHour = calendar.get(Calendar.HOUR_OF_DAY)
@@ -82,7 +87,7 @@ class BookingViewModel @Inject constructor() : ViewModel() {
                 time = readDate
             }.get(Calendar.DAY_OF_MONTH)
 
-            if (currentDay == chipDate && hour <= currentHour) { // currentHour
+            if (currentDay == chipDate && hour <= 20) { // currentHour
                 chip.isEnabled = false
 
 
@@ -98,10 +103,13 @@ class BookingViewModel @Inject constructor() : ViewModel() {
         selectedChipGroup: ChipGroup,
         otherChipGroup: ChipGroup
     ) {
+
         if (selectedChipGroup.transitionName == "dateTimeStarDustChipGroup") {
             movieTheaterName = "Stardust Cinema"
+            Log.e("Dante",selectedChipGroup.transitionName)
         } else if (selectedChipGroup.transitionName == "dateTimeCosmosChipGroup") {
             movieTheaterName = "Cosmos Cinema"
+            Log.e("Dante",selectedChipGroup.transitionName)
         }
 
         for (i in 0 until selectedChipGroup.childCount) {
@@ -112,6 +120,10 @@ class BookingViewModel @Inject constructor() : ViewModel() {
                 return
             }
         }
+    }
+
+    fun ticketPrice(ticketCount: Int):String {
+        return "\$${ticketCount * 10}"
     }
 
 

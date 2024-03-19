@@ -60,6 +60,34 @@ class FirebaseOperationsViewModel @Inject constructor(var collectionBooking: Col
         return listBookingSeats
     }
 
+    fun splitIdsAndSave(idList: List<String>,movieId: String, date: String, time: String) {
+        val ticketsId = idList.joinToString(separator = ",")
+        Log.e("Dante",ticketsId)
+        collectionBooking.whereEqualTo("movieId", movieId)
+            .whereEqualTo("bookingDate", date)
+            .whereEqualTo("bookingTime", time)
+            .get()
+            .addOnSuccessListener { documents ->
+                for (document in documents) {
+                    val ticketValues = ticketsId.split(",") // ticketsId'yi virgüllerle ayırarak bir liste oluştur
+                    val updateMap = mutableMapOf<String, Any>() // Güncellenecek alanları ve değerlerini tutacak bir harita oluştur
+                    for (ticketId in ticketValues) {
+                        updateMap[ticketId] = true // tickets alanındaki her bir ticketId'nin değerini true yap
+                    }
+                    // Belgeyi güncelle
+                    collectionBooking.document(document.id).update(updateMap)
+                        .addOnSuccessListener {
+                            Log.e("Dante", "Belge başarıyla güncellendi: ${document.id}")
+                        }
+                        .addOnFailureListener { exception ->
+                            Log.e("Dante", "Belge güncelleme hatası: $exception")
+                        }
+                }
+            }
+            .addOnFailureListener { exception ->
+                Log.e("Dante", "Belgeleri alma hatası: $exception")
+            }
 
+    }
 
 }
