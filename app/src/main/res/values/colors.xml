@@ -24,6 +24,7 @@
     <color name="transparent">#00000000</color>
     <color name="textLightGray">#80FFFEFE</color>
     <color name="chipDisabledBackGroundColor">#656363</color>
+    <color name="creditCardBackground">#273048</color>
 <!--    <color name="lightGray">#F9F9F9</color>-->
 
     // Custom Chip Style
