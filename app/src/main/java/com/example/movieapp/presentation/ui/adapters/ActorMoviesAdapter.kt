@@ -24,6 +24,7 @@ class ActorMoviesAdapter: RecyclerView.Adapter<ActorMoviesAdapter.MyViewHolder>(
             binding.constLayoutCardView.setOnClickListener {
                 //TODO (Onr) adapter içerisine ocItemClickLickListener eklenecek
                 if (result.posterPath != null) {
+
                     val action = ActorDetailsFragmentDirections.actionActorDetailsFragmentToDetailsFragment(result.id,result.posterPath)
                     Navigation.findNavController(it).navigate(action)
                 }
