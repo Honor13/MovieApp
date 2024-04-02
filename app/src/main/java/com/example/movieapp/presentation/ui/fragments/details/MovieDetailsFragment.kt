@@ -15,6 +15,7 @@ import com.example.movieapp.R
 import com.example.movieapp.data.models.moviedetails.DetailsResult
 import com.example.movieapp.databinding.FragmentDetailsBinding
 import com.example.movieapp.presentation.ui.adapters.CastingAdapter
+import com.example.movieapp.presentation.ui.viewmodels.FavoritesViewModel
 import com.example.movieapp.presentation.ui.viewmodels.MainViewModel
 import com.example.movieapp.presentation.ui.viewmodels.MoviesViewModel
 import com.example.movieapp.util.NetworkResult
@@ -26,9 +27,11 @@ class MovieDetailsFragment : Fragment() {
 
     private lateinit var binding: FragmentDetailsBinding
     private val castingAdapter by lazy { CastingAdapter() }
+    private lateinit var objectMovie: DetailsResult
 
     private lateinit var mainViewModel: MainViewModel
     private lateinit var moviesViewModel: MoviesViewModel
+    private lateinit var favoritesViewModel: FavoritesViewModel
 
     private var actionDetailsResult: DetailsResult? = null
 
@@ -43,6 +46,7 @@ class MovieDetailsFragment : Fragment() {
         val bundle: MovieDetailsFragmentArgs by navArgs()
         val movieId = bundle.movieId
         val posterPath= bundle.posterPath
+
         binding.posterPath = posterPath
 
 //        binding.vote = String.format(Locale.US, "%,.1f", result.voteAverage)
@@ -56,6 +60,10 @@ class MovieDetailsFragment : Fragment() {
                 val action = MovieDetailsFragmentDirections.actionDetailsFragmentToBookingScheduleFragment(result)
                 Navigation.findNavController(it).navigate(action)
             }
+        }
+
+        binding.imgToolbarBtnFav.setOnClickListener {
+            favoritesViewModel.addFavoriteMovies("userId",objectMovie.id!!,objectMovie.originalTitle!!,objectMovie.posterPath!!,objectMovie.overview!!,objectMovie.voteAverage!!)
         }
 
         setupRecyclerView()
@@ -73,6 +81,7 @@ class MovieDetailsFragment : Fragment() {
             when (response) {
                 is NetworkResult.Success -> {
                     response.data?.let { detailData ->
+                        objectMovie = detailData
                         binding.result = detailData
                         actionDetailsResult = detailData
                         binding.category=mainViewModel.processMoviesGenres(detailData.genres ?: emptyList())
@@ -146,6 +155,7 @@ class MovieDetailsFragment : Fragment() {
         super.onCreate(savedInstanceState)
         mainViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
         moviesViewModel = ViewModelProvider(this).get(MoviesViewModel::class.java)
+        favoritesViewModel = ViewModelProvider(this).get(FavoritesViewModel::class.java)
     }
 
 
