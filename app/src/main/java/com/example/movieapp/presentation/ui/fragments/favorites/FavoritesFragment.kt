@@ -19,33 +19,40 @@ import kotlinx.coroutines.launch
 @AndroidEntryPoint
 class FavoritesFragment : Fragment() {
 
-    private lateinit var binding : FragmentFavoritesBinding
+    private lateinit var binding: FragmentFavoritesBinding
     private lateinit var favoritesViewModel: FavoritesViewModel
+    private lateinit var adapter: FavoriteMoviesAdapter
 
-    private val favMoviesAdapter by lazy { FavoriteMoviesAdapter() }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
-        binding = DataBindingUtil.inflate(layoutInflater,R.layout.fragment_favorites,container,false)
+        binding =
+            DataBindingUtil.inflate(layoutInflater, R.layout.fragment_favorites, container, false)
 
+
+        adapter = FavoriteMoviesAdapter(onItemClickListener = {favorites,movieId->
+            favoritesViewModel.deleteFavorites("userId",movieId)
+        })
         setupRecyclerView()
+
         favoritesViewModel.getFavorites("userId")
         lifecycleScope.launch {
-            favoritesViewModel.listFav.collect{favorites ->
-                favMoviesAdapter.setData(favorites)
+            favoritesViewModel.listFav.collect { favorites ->
+                adapter.setData(favorites)
             }
         }
+
+
 
 
         return binding.root
     }
 
 
-
     private fun setupRecyclerView() {
-        binding.rvFavorites.adapter = favMoviesAdapter
+        binding.rvFavorites.adapter = adapter
         binding.rvFavorites.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
     }

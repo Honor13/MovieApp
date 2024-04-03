@@ -8,14 +8,19 @@ import com.example.movieapp.data.database.entities.Favorites
 import com.example.movieapp.databinding.FavoritesCardDesignBinding
 import com.example.movieapp.util.MoviesDiffUtil
 
-class FavoriteMoviesAdapter : RecyclerView.Adapter<FavoriteMoviesAdapter.MyViewHolder>() {
+class FavoriteMoviesAdapter(private val onItemClickListener: (Favorites,Int) -> Unit) : RecyclerView.Adapter<FavoriteMoviesAdapter.MyViewHolder>() {
 
     private var favMovies = emptyList<Favorites>()
     class MyViewHolder(private val binding: FavoritesCardDesignBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(favorites: Favorites) {
+        fun bind(favorites: Favorites,onItemClickListener: (Favorites,Int) -> Unit) {
             binding.favorites = favorites
+
+            binding.imageBookmark.setOnClickListener {
+                onItemClickListener.invoke(favorites,favorites.movieId)
+            }
+
             binding.executePendingBindings()
         }
 
@@ -38,7 +43,7 @@ class FavoriteMoviesAdapter : RecyclerView.Adapter<FavoriteMoviesAdapter.MyViewH
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val currentFavoriteMovies = favMovies[position]
-        holder.bind(currentFavoriteMovies)
+        holder.bind(currentFavoriteMovies,onItemClickListener)
     }
 
     fun setData(newData: List<Favorites>){

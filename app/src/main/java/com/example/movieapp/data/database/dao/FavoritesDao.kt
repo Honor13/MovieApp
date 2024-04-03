@@ -15,6 +15,11 @@ interface FavoritesDao {
     @Insert
     suspend fun addFavorite(favMovie:Favorites)
 
-    @Query("DELETE FROM favorites WHERE userId = :userId AND favMovieId = :favMovieId")
-    suspend fun deleteFav(userId: String,favMovieId:Int)
+    @Query("DELETE FROM favorites WHERE userId = :userId AND movieId = :movieId")
+    suspend fun deleteFav(userId: String,movieId:Int)
+
+    @Query("SELECT EXISTS(SELECT 1 FROM favorites WHERE userId = :userId AND movieId = :movieId)")
+     suspend fun existsFavorite(userId: String, movieId: Int): Boolean
+
+
 }

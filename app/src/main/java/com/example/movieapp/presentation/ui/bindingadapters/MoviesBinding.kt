@@ -1,4 +1,5 @@
 package com.example.movieapp.presentation.ui.bindingadapters
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -16,6 +17,9 @@ import com.example.movieapp.util.Constants.Companion.IMAGE_500
 class MoviesBinding {
 
     companion object {
+
+
+
         @BindingAdapter("tVseries_id","tVposterPath", requireAll = false)
         @JvmStatic
         fun onTVSeriesSetOnClickListener(moviesRowLayout: ConstraintLayout,seriesId: Int,posterPath: String){

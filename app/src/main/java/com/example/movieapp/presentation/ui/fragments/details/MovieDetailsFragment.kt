@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -20,6 +21,9 @@ import com.example.movieapp.presentation.ui.viewmodels.MainViewModel
 import com.example.movieapp.presentation.ui.viewmodels.MoviesViewModel
 import com.example.movieapp.util.NetworkResult
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import java.util.Locale
 
 @AndroidEntryPoint
@@ -35,6 +39,8 @@ class MovieDetailsFragment : Fragment() {
 
     private var actionDetailsResult: DetailsResult? = null
 
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -43,32 +49,67 @@ class MovieDetailsFragment : Fragment() {
             DataBindingUtil.inflate(layoutInflater, R.layout.fragment_details, container, false)
 
 
+
+
+
         val bundle: MovieDetailsFragmentArgs by navArgs()
         val movieId = bundle.movieId
-        val posterPath= bundle.posterPath
+        val posterPath = bundle.posterPath
 
         binding.posterPath = posterPath
 
-//        binding.vote = String.format(Locale.US, "%,.1f", result.voteAverage)
+        CoroutineScope(Dispatchers.Main).launch {
+            favoritesViewModel.existsFavorites("userId",movieId)
+        }
 
-        binding.imgToolbarBtnBack.setOnClickListener{
+        lifecycleScope.launch {
+
+            lifecycleScope.launch {
+                favoritesViewModel.isFavorite.collect { isFavorite ->
+                    updateFavoriteUI(isFavorite)
+                }
+            }
+        }
+
+        binding.imgToolbarBtnBack.setOnClickListener {
             requireActivity().supportFragmentManager.popBackStack()
         }
 
         binding.buttonBookNow.setOnClickListener {
             actionDetailsResult?.let { result ->
-                val action = MovieDetailsFragmentDirections.actionDetailsFragmentToBookingScheduleFragment(result)
+                val action =
+                    MovieDetailsFragmentDirections.actionDetailsFragmentToBookingScheduleFragment(
+                        result
+                    )
                 Navigation.findNavController(it).navigate(action)
             }
         }
 
         binding.imgToolbarBtnFav.setOnClickListener {
-            favoritesViewModel.addFavoriteMovies("userId",objectMovie.id!!,objectMovie.originalTitle!!,objectMovie.posterPath!!,objectMovie.overview!!,objectMovie.voteAverage!!)
+
+            favoritesViewModel.handleFavoriteAction(
+                "userId",
+                movieId,
+                objectMovie.originalTitle!!,
+                objectMovie.posterPath!!,
+                objectMovie.overview!!,
+                objectMovie.voteAverage!!
+            )
         }
+
+
 
         setupRecyclerView()
         requestApiData(movieId)
         return binding.root
+    }
+
+    private fun updateFavoriteUI(isFavorite: Boolean) {
+        if (isFavorite) {
+            binding.imgToolbarBtnFav.setImageResource(R.drawable.ic_add_fill_fav)
+        } else {
+            binding.imgToolbarBtnFav.setImageResource(R.drawable.ic_add_favorite)
+        }
     }
 
 
@@ -84,7 +125,8 @@ class MovieDetailsFragment : Fragment() {
                         objectMovie = detailData
                         binding.result = detailData
                         actionDetailsResult = detailData
-                        binding.category=mainViewModel.processMoviesGenres(detailData.genres ?: emptyList())
+                        binding.category =
+                            mainViewModel.processMoviesGenres(detailData.genres ?: emptyList())
                         binding.vote = String.format(Locale.US, "%,.1f", detailData.voteAverage)
                     }
                     hideProgressBar()
@@ -157,7 +199,6 @@ class MovieDetailsFragment : Fragment() {
         moviesViewModel = ViewModelProvider(this).get(MoviesViewModel::class.java)
         favoritesViewModel = ViewModelProvider(this).get(FavoritesViewModel::class.java)
     }
-
 
 
 }

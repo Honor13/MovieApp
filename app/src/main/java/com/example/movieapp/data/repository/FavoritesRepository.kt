@@ -12,4 +12,10 @@ class FavoritesRepository(var fDso: FavoritesDataSource) {
 
     suspend fun deleteFavorites(userId: String,movieId: Int) = fDso.deleteFavorites(userId,movieId)
 
+     suspend fun existsFavorite(userId: String, movieId: Int): Boolean {
+        return fDso.existsFavorite(userId, movieId)
+    }
+
+
+
 }

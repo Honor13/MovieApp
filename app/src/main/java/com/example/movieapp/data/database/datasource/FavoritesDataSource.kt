@@ -26,4 +26,10 @@ class FavoritesDataSource @Inject constructor(private val favDao: FavoritesDao) 
 
     suspend fun deleteFavorites(userId: String, favMovieId: Int) =
         favDao.deleteFav(userId, favMovieId)
+
+     suspend fun existsFavorite(userId: String, movieId: Int): Boolean {
+        return favDao.existsFavorite(userId, movieId)
+    }
+
+
 }
