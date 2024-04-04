@@ -8,5 +8,5 @@ import com.example.movieapp.data.database.entities.Favorites
 @Database(entities = [Favorites::class], version = 1)
 abstract class FavoritesDatabase : RoomDatabase() {
 
-    abstract fun getFavorites():FavoritesDao
+    abstract fun getFavorites(): FavoritesDao
 }
