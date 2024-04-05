@@ -24,4 +24,13 @@
     <string name="card_holder">CARD HOLDER</string>
     <string name="cardholder_name">CARDHOLDER NAME</string>
     <string name="expire_date">EXPIRE DATE</string>
+    <string name="enter_bank_name">Enter Bank Name...</string>
+    <string name="enter_card_holder_name">Enter Card Holder Name...</string>
+    <string name="enter_card_number">Enter Card Number...</string>
+    <string name="bank_name_lowercase">Bank Name</string>
+    <string name="card_holder_name">Card Holder Name</string>
+    <string name="card_number">Card Number</string>
+    <string name="expire_date_lowercase">Expire Date</string>
+    <string name="add_credit_card">Add Credit Card</string>
+    <string name="add_card">Add Card</string>
 </resources>
