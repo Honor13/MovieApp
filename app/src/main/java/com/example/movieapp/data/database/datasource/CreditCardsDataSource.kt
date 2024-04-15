@@ -13,11 +13,11 @@ class CreditCardsDataSource @Inject constructor(private val creditDao: CreditCar
     suspend fun addCreditCards(
         userId: String,
         cardHolderName: String,
-        bankname: String,
+        bankName: String,
         cardNumber: String,
         expireDate: String
     ) {
-        val newCard = CreditCards(0, userId, cardHolderName, bankname, cardNumber, expireDate)
+        val newCard = CreditCards(0, userId, cardHolderName, bankName, cardNumber, expireDate)
         creditDao.addCreditCards(newCard)
     }
 

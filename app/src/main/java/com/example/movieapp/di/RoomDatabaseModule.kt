@@ -8,6 +8,7 @@ import com.example.movieapp.data.database.dao.CreditCardsDao
 import com.example.movieapp.data.database.dao.FavoritesDao
 import com.example.movieapp.data.database.datasource.CreditCardsDataSource
 import com.example.movieapp.data.database.datasource.FavoritesDataSource
+import com.example.movieapp.data.repository.CreditCardsRepository
 import com.example.movieapp.data.repository.FavoritesRepository
 import dagger.Module
 import dagger.Provides
@@ -54,4 +55,9 @@ object RoomDatabaseModule {
                 .build()
         return db.getCreditCards()
     }
+
+    @Provides
+    @Singleton
+    fun provideCreditCardsRepository(cDso: CreditCardsDataSource): CreditCardsRepository =
+        CreditCardsRepository(cDso)
 }

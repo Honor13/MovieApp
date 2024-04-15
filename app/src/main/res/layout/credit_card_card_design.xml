@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
+        <variable
+            name="objectCreditCard"
+            type="com.example.movieapp.data.database.entities.CreditCards" />
 
     </data>
 
@@ -43,7 +48,7 @@
                     android:layout_marginStart="24dp"
                     android:layout_marginTop="24dp"
                     android:fontFamily="@font/noto_sans"
-                    android:text="**** **** **** 3456"
+                    android:text="@{objectCreditCard.cardNumber}"
                     android:textColor="@color/white"
                     android:textSize="22sp"
                     app:layout_constraintStart_toStartOf="parent"
@@ -61,7 +66,7 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="16dp"
                     android:fontFamily="@font/noto_sans"
-                    android:text="@string/mm_yy"
+                    android:text="@{objectCreditCard.expireDate}"
                     android:textColor="@color/white"
                     android:textSize="12sp"
                     android:textStyle="bold"
@@ -76,7 +81,7 @@
                     android:layout_marginStart="24dp"
                     android:layout_marginTop="16dp"
                     android:fontFamily="@font/noto_sans"
-                    android:text="@string/bank_name"
+                    android:text="@{objectCreditCard.bankName}"
                     android:textColor="@color/white"
                     android:textSize="16sp"
                     app:layout_constraintStart_toStartOf="parent"
@@ -90,7 +95,7 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="16dp"
                     android:fontFamily="@font/noto_sans"
-                    android:text="@string/card_holder"
+                    android:text="@{objectCreditCard.cardholderName}"
                     android:textColor="@color/white"
                     android:textSize="12sp"
                     android:textStyle="bold"
@@ -102,7 +107,7 @@
                     android:id="@+id/imageViewCardType"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="48dp"
                     android:layout_marginEnd="16dp"
                     android:src="@drawable/master_card_logo"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -132,6 +137,16 @@
                     app:layout_constraintEnd_toEndOf="@+id/textViewExpiryDate"
                     app:layout_constraintStart_toStartOf="@+id/textViewExpiryDate"
                     app:layout_constraintTop_toTopOf="@+id/textView18" />
+
+                <ImageView
+                    android:id="@+id/imageViewDeleteCard"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_delete" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>

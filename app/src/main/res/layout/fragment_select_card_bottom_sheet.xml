@@ -4,7 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+            <variable
+                name="creditCardsViewModel"
+                type="com.example.movieapp.presentation.ui.viewmodels.CreditCardsViewModel" />
+            <variable
+                name="cAdapter"
+                type="com.example.movieapp.presentation.ui.adapters.CreditCardsAdapter" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -15,40 +20,66 @@
 
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
+            android:id="@+id/rVCards"
             android:layout_width="0dp"
             android:layout_height="300dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/button4"
+            android:id="@+id/buttonApprove"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="32dp"
-            android:text="Approve Payment"
-            android:textStyle="bold"
-            android:textSize="16sp"
+            android:layout_marginBottom="8dp"
             android:backgroundTint="@color/red"
+            android:text="Approve Payment"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_bias="0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
+            app:layout_constraintTop_toBottomOf="@+id/textViewAddNewCard" />
 
         <TextView
-            android:id="@+id/textView20"
+            android:id="@+id/textViewAddNewCard"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
-            android:text="+ Add a new card"
+            android:text="@string/add_a_new_card"
             android:textColor="@color/blue"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/buttonApprove"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button4" />
+            app:layout_constraintTop_toBottomOf="@+id/rVCards" />
+
+        <ImageView
+            android:id="@+id/imageView10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_empty"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/rVCards"
+            app:layout_constraintVertical_bias="0.35000002" />
+
+        <TextView
+            android:id="@+id/textView42"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="No Card Has Been Added Yet"
+            android:textColor="@color/transparentGray"
+            app:layout_constraintEnd_toEndOf="@+id/imageView10"
+            app:layout_constraintStart_toStartOf="@+id/imageView10"
+            app:layout_constraintTop_toBottomOf="@+id/imageView10" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
