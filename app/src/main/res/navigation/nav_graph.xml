@@ -91,5 +91,33 @@
             android:name="date"
             app:argType="string"
             app:nullable="true" />
+        <action
+            android:id="@+id/action_bookNowFragment_to_selectCardBottomSheet"
+            app:destination="@id/selectCardBottomSheet" >
+
+        </action>
+    </fragment>
+    <dialog
+        android:id="@+id/selectCardBottomSheet"
+        android:name="com.example.movieapp.presentation.ui.fragments.creditcards.bottomsheet.SelectCardBottomSheet"
+        android:label="SelectCardBottomSheet" >
+        <action
+            android:id="@+id/action_selectCardBottomSheet_to_addCreditCardFragment"
+            app:destination="@id/addCreditCardFragment" />
+        <action
+            android:id="@+id/action_selectCardBottomSheet_to_bookNowFragment"
+            app:destination="@id/bookNowFragment" >
+
+        </action>
+
+    </dialog>
+    <fragment
+        android:id="@+id/addCreditCardFragment"
+        android:name="com.example.movieapp.presentation.ui.fragments.creditcards.AddCreditCardFragment"
+        android:label="fragment_add_credit_card"
+        tools:layout="@layout/fragment_add_credit_card" >
+        <action
+            android:id="@+id/action_addCreditCardFragment_to_selectCardBottomSheet"
+            app:destination="@id/selectCardBottomSheet" />
     </fragment>
 </navigation>
