@@ -44,7 +44,7 @@ object RoomDatabaseModule {
 
     @Provides
     @Singleton
-    fun provideCreditCardsDataSoruce(creditsDao: CreditCardsDao) = CreditCardsDataSource(creditsDao)
+    fun provideCreditCardsDataSource(creditsDao: CreditCardsDao) = CreditCardsDataSource(creditsDao)
 
     @Provides
     @Singleton

@@ -7,8 +7,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.movieapp.R
 import com.example.movieapp.databinding.FragmentBookNowBinding
@@ -61,8 +63,17 @@ class BookNowFragment : Fragment() {
         }
 
         binding.button3.setOnClickListener {
-            firebaseViewModel.splitIdsAndSave(getIds,movie.id.toString(),date.toString(),time.toString())
-            getIds= emptyList()
+            if (!getIds.isNullOrEmpty()) {
+                findNavController().navigate(R.id.action_bookNowFragment_to_selectCardBottomSheet)
+
+            }else {
+                Toast.makeText(requireContext(),"Please select seats",Toast.LENGTH_LONG).show()
+            }
+//            }else if (isCardSelected == true && !getIds.isNullOrEmpty()){
+//                firebaseViewModel.splitIdsAndSave(getIds,movie.id.toString(),date.toString(),time.toString())
+//                getIds= emptyList()
+//            }
+
         }
 
 
