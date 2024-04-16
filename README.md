@@ -1,6 +1,6 @@
 # Movie App
 ## Screenshots
-| Home                   | Details        | Artist Details  | Tv Series Detayı      | Favorites        |
+| Home                   | Details        | Artist Details  | Tv Series Detail      | Favorites        |
 |-------------------------|-----------------|-----------------|------------------|------------------|
 | <img src="https://github.com/Honor13/MovieApp/assets/53227891/6341279a-488f-4bd7-ac22-235b16fdef59" alt="Home" width="200px"/> | <img src="https://github.com/Honor13/MovieApp/assets/53227891/c7179fd9-57e1-4ba8-9ad6-5f399e627312" alt="Movie Detail" width="200px"/> | <img src="https://github.com/Honor13/MovieApp/assets/53227891/e83cac45-e81f-4673-81f6-c151b8b3986a" alt="Artist Detail" width="200px"/> | <img src="https://github.com/Honor13/MovieApp/assets/53227891/cd3df6fb-f4ea-4dc4-9be8-b0ee046f2e87" alt="Tv Series Detail" width="200px"/> | <img src="https://github.com/Honor13/MovieApp/assets/53227891/52719dfc-6868-4051-886e-4b9d7faf2f85" alt="Favorites" width="200px"/> |
 | Cinema Visit Planner          |   Seats Selection   | Add Credit Card  | Approve Payment | Watch List |
