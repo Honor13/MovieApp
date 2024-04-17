@@ -6,7 +6,7 @@
     <string name="watchlist">WatchList</string>
     <string name="favorites">Favorites</string>
     <string name="home">Home</string>
-    <string name="coming_soon">Coming Soon</string>
+    <string name="new_movies">New Movies</string>
     <string name="trending_tv">Trending TV</string>
     <string name="popular">Popular</string>
     <string name="trending_movies">Trending Movies</string>
@@ -34,4 +34,14 @@
     <string name="add_credit_card">Add Credit Card</string>
     <string name="add_card">Add Card</string>
     <string name="add_a_new_card">+ Add a new card</string>
+    <string name="enter_password">Enter Password</string>
+    <string name="sign_in">Sign in</string>
+    <string name="sing_up">Sing Up</string>
+    <string name="forgot_password">Forgot Password</string>
+    <string name="let_s_sign_you_in">Lets sign you in</string>
+    <string name="enter_email">Enter Email</string>
+    <string name="don_t_have_an_account">Don\'t have an account</string>
+    <string name="already_have_an_account">Already have an account?</string>
+    <string name="create_an_account">Create an account</string>
+    <string name="enter_username">Enter Username</string>
 </resources>

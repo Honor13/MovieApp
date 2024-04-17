@@ -39,7 +39,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:fontFamily="@font/unica_one"
-                android:text="@string/coming_soon"
+                android:text="@string/new_movies"
                 android:textColor="@color/white"
                 android:textSize="22sp"
                 android:textStyle="bold"
