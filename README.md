@@ -1,0 +1,8 @@
+# Movie App
+## Screenshots
+| Home                   | Details        | Artist Details  | Tv Series Detail      | Favorites        |
+|-------------------------|-----------------|-----------------|------------------|------------------|
+| <img src="https://github.com/Honor13/MovieApp/assets/53227891/6341279a-488f-4bd7-ac22-235b16fdef59" alt="Home" width="200px"/> | <img src="https://github.com/Honor13/MovieApp/assets/53227891/c7179fd9-57e1-4ba8-9ad6-5f399e627312" alt="Movie Detail" width="200px"/> | <img src="https://github.com/Honor13/MovieApp/assets/53227891/e83cac45-e81f-4673-81f6-c151b8b3986a" alt="Artist Detail" width="200px"/> | <img src="https://github.com/Honor13/MovieApp/assets/53227891/cd3df6fb-f4ea-4dc4-9be8-b0ee046f2e87" alt="Tv Series Detail" width="200px"/> | <img src="https://github.com/Honor13/MovieApp/assets/53227891/52719dfc-6868-4051-886e-4b9d7faf2f85" alt="Favorites" width="200px"/> |
+| Cinema Visit Planner          |   Seats Selection   | Add Credit Card  | Approve Payment | Watch List |
+| <img src="https://github.com/Honor13/MovieApp/assets/53227891/617bee2f-8784-498c-91e0-6ae01fa9e4e9" alt="Cinema Visit Planner" width="200px"/> | <img src="https://github.com/Honor13/MovieApp/assets/53227891/037705e0-b155-4a12-b217-eea52e8a4077" alt="Seats Selection" width="200px"/> | <img src="https://github.com/Honor13/MovieApp/assets/53227891/9fec040a-60a8-4c83-b4c9-8bc011fe8627" alt="Add Credit Card " width="200px"/> | <img src="https://github.com/Honor13/MovieApp/assets/53227891/9aebac06-265e-4dcd-8ecb-a511ef1a3cd1" alt="Approve Payment" width="200px"/> | <img src="https://github.com/Honor13/MovieApp/assets/53227891/0d84e4e3-f11b-4c22-8703-697b81de1ad4" alt="Watch List" width="200px"/> |
+
