@@ -9,7 +9,9 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="red">#DC2222</color>
-
+    <color name="lavender">#8692f7</color>
+    <color name="yellow">#FFEB3B</color>
+    <color name="green">#32E809</color>
 
     <color name="dateColor">#8983B8</color>
 

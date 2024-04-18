@@ -44,4 +44,13 @@
     <string name="already_have_an_account">Already have an account?</string>
     <string name="create_an_account">Create an account</string>
     <string name="enter_username">Enter Username</string>
+    <string name="logout">Logout</string>
+    <string name="profile">Profile</string>
+    <string name="notifications">Notifications</string>
+    <string name="regional">Regional</string>
+    <string name="dark_mode">Dark Mode</string>
+    <string name="personal_details">Personal Details</string>
+    <string name="user_name">User Name</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="change_password">Change Password</string>
 </resources>
